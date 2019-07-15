@@ -1,14 +1,11 @@
 package com.github.brelok.classCar;
 
-import com.github.brelok.configuration.BaseEntity;
+import com.github.brelok.BaseEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @Entity
 public class ClassCar extends BaseEntity {
@@ -19,5 +16,22 @@ public class ClassCar extends BaseEntity {
 
     private String type;
 
-//Arrays.asList("SUV", "kombi", "sedan", "compact", "coupe", "VAN");
+    public ClassCar() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

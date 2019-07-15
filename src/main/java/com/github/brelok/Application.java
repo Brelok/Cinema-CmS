@@ -23,7 +23,7 @@ public class Application {
     @Bean
     public Docket newsApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("Book API")
+                .groupName("Car API")
                 .apiInfo(apiInfo())
                 .select()
                 .paths(regex("/api.*"))
@@ -33,7 +33,7 @@ public class Application {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .description("Simple REST API to learn")
-                .title("Rent a book")
+                .title("Rent a car")
                 .build();
     }
 }

@@ -1,6 +1,6 @@
 package com.github.brelok.user;
 
-import com.github.brelok.configuration.BaseEntity;
+import com.github.brelok.BaseEntity;
 import com.github.brelok.order.Order;
 
 import javax.persistence.*;

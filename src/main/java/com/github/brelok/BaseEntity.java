@@ -1,4 +1,4 @@
-package com.github.brelok.configuration;
+package com.github.brelok;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -9,7 +9,7 @@ import java.util.UUID;
 public class BaseEntity {
 
     @Column(unique = true)
-    private String uuid = UUID.randomUUID().toString(); //coś bardzo unikalnego
+    private String uuid = UUID.randomUUID().toString();
 
     public String getUuid() {
         return uuid;
