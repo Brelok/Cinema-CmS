@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import sun.tools.tree.DoubleExpression;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -104,5 +105,25 @@ public class CarService {
         car.setYearOfProduction(carDtoSave.getYearOfProduction());
         car.setBrandCar(brandCarRepository.findOne(carDtoSave.getBrandId()));
         return car;
+    }
+
+    public Long countAllCarsOfThisBrand(long id){
+        return carRepository.findAll().stream()
+                .map(CarDtoSave::new)
+                .filter(carDtoSave -> carDtoSave.getBrandId() == id).count();
+    }
+
+    public Set findAllBrandsCar (){
+        return carRepository.findAll().stream()
+                .map(CarDtoDisplay::new)
+                .map(CarDtoDisplay::getBrandName)
+                .collect(Collectors.toSet());
+    }
+
+    public List findAllCarByBrandName(String name){
+        return carRepository.findAll().stream()
+                .map(CarDtoDisplay::new)
+                .filter(carDtoDisplay -> carDtoDisplay.getBrandName().equals(name))
+                .collect(Collectors.toList());
     }
 }
