@@ -1,9 +1,11 @@
 package com.github.brelok.car;
 
 import com.github.brelok.brandCar.BrandCarRepository;
+import javafx.scene.transform.MatrixType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sun.tools.tree.DoubleExpression;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,6 +42,44 @@ public class CarService {
 
     public CarDtoSave findOneDto(Long id) {
         return new CarDtoSave(carRepository.findOne(id));
+    }
+
+    public Long countAvailableCar() {
+        return carRepository.findAll().stream()
+                .filter(car -> car.isStatus() == true).count();
+    }
+
+    public Long countAllCars(){
+        return carRepository.findAll().stream().count();
+    }
+
+    public double avarageRating(){
+        double sumRatings = 0;
+
+        for (Car car : carRepository.findAll()){
+            sumRatings += car.getRating();
+        }
+
+        return sumRatings / countAllCars();
+
+    }
+
+    public Long AvarageYear (){
+        int sumYears = 0;
+
+        for(Car car : carRepository.findAll()){
+            sumYears += car.getYearOfProduction();
+        }
+        return sumYears / countAllCars();
+    }
+
+    public double avaragePrice(){
+        double avaragePrice = 0;
+
+        for (Car car : carRepository.findAll()){
+            avaragePrice += car.getPricePerDay();
+        }
+        return avaragePrice / countAllCars();
     }
 
 

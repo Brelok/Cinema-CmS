@@ -33,6 +33,16 @@ public class CarViewController {
         return "cars";
     }
 
+    @GetMapping("/dashboard")
+    public String dashboard(Model model){
+        model.addAttribute("car", carService.countAvailableCar());
+        model.addAttribute("count", carService.countAllCars());
+        model.addAttribute("avarage", carService.avarageRating());
+        model.addAttribute("avarageYear", carService.AvarageYear());
+        model.addAttribute("avaragePrice", carService.avaragePrice());
+        return "dashboard";
+    }
+
     @ModelAttribute("brands")
     public List getAllBrand() {
         return brandCarService.findAll();
