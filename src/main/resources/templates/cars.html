@@ -16,14 +16,15 @@
         <th>RATING</th>
         <th>STATUS</th>
       </tr>
-<!--      <tr th:each="car : ${cars}">-->
-<!--        <td th:text="${car.brandCar}"></td>-->
-<!--        <td th:text="${car.model}"></td>-->
-<!--        <td th:text="${car.classCar}"></td>-->
-<!--        <td th:text="${car.yearOfProduction}"></td>-->
-<!--        <td th:text="${car.pricePerDay}"></td>-->
-<!--        <td th:text="${car.rating}"></td>-->
-<!--        <td th:text="${car.isStatus}? #{true} : #{false}">yes</td>-->
+      <tr th:each="car : ${cars}">
+        <td th:text="${car.brandCarName}"></td>
+        <td th:text="${car.model}"></td>
+        <td th:text="${car.classCarName}"></td>
+        <td th:text="${car.yearOfProduction}"></td>
+        <td th:text="${car.pricePerDay}"></td>
+        <td th:text="${car.rating}"></td>
+        <td th:text="${car.status}? #{true} : #{false}">yes</td>
+      </tr>
     </table>
 </body>
 </html>

@@ -60,7 +60,7 @@ public class CarService {
         car.setRating(carDto.getRating());
         car.setStatus(carDto.isStatus());
         car.setYearOfProduction(carDto.getYearOfProduction());
-        car.setBrandCar(brandCarRepository.findOne(carDto.getBrandId()));
+        car.setBrandCar(brandCarRepository.findOne(carDto.getId()));
 
         return car;
     }

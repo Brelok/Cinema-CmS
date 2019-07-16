@@ -31,7 +31,9 @@ public class CarDto {
 
     private List<String> additionsCar;
     private List<String> equipmentsCar;
-    private Long brandId;
+//    private Long brandId;
+    private String brandCarName;
+
 
     public CarDto() {
     }
@@ -48,7 +50,7 @@ public class CarDto {
                 .map(AdditionsCar::getName).collect(Collectors.toList());
         this.equipmentsCar = that.getEquipmentsCars().stream()
                 .map(EquipmentsCar::getName).collect(Collectors.toList());
-        this.brandId = that.getBrandCar().getId();
+        this.brandCarName = that.getBrandCar().toString();
 
     }
 
@@ -124,11 +126,11 @@ public class CarDto {
         this.equipmentsCar = equipmentsCar;
     }
 
-    public Long getBrandId() {
-        return brandId;
+    public String getBrandCarName() {
+        return brandCarName;
     }
 
-    public void setBrandId(Long brandId) {
-        this.brandId = brandId;
+    public void setBrandCarName(String brandCarName) {
+        this.brandCarName = brandCarName;
     }
 }

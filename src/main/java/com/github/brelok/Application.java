@@ -26,7 +26,7 @@ public class Application {
                 .groupName("Car API")
                 .apiInfo(apiInfo())
                 .select()
-                .paths(regex("/api.*"))
+                .paths(regex("/.*"))
                 .build();
     }
 

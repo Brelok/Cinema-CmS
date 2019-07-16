@@ -37,9 +37,6 @@ public class BrandCar extends BaseEntity {
 
     @Override
     public String toString() {
-        return "BrandCar{" +
-                "id=" + id +
-                ", brand='" + brand + '\'' +
-                '}';
+        return brand;
     }
 }
