@@ -22,48 +22,47 @@ public class CarService {
         this.brandCarRepository = brandCarRepository;
     }
 
-    public List findAll(){
+    public List findAll() {
         List<Car> carList = carRepository.findAll();
 
         return carList.stream()
-                .map(CarDto::new)
+                .map(CarDtoDisplay::new)
                 .collect(Collectors.toList());
     }
 
-    public void delete (Car car) {
+    public void delete(Car car) {
         carRepository.delete(car);
     }
 
-    public Car findOne(Long id){
+    public Car findOne(Long id) {
         return carRepository.findOne(id);
     }
 
-    public CarDto findOneDto(Long id) {
-        return new CarDto(carRepository.findOne(id));
+    public CarDtoSave findOneDto(Long id) {
+        return new CarDtoSave(carRepository.findOne(id));
     }
 
 
-    public void createCar(CarDto carDto){
+    public void createCar(CarDtoSave carDtoSave) {
         Car car = new Car();
 
-        carRepository.save(setValuesCarFromDtoValues(car, carDto));
+        carRepository.save(setValuesCarFromDtoValues(car, carDtoSave));
     }
 
-    public void editCar(CarDto carDto){
-        Car existing = carRepository.findOne(carDto.getId());
+    public void editCar(CarDtoSave carDtoSave) {
+        Car existing = carRepository.findOne(carDtoSave.getId());
 
-        carRepository.save(setValuesCarFromDtoValues(existing, carDto));
+        carRepository.save(setValuesCarFromDtoValues(existing, carDtoSave));
     }
 
-    private Car setValuesCarFromDtoValues (Car car, CarDto carDto){
+    private Car setValuesCarFromDtoValues(Car car, CarDtoSave carDtoSave) {
 
-        car.setModel(carDto.getModel());
-        car.setPricePerDay(carDto.getPricePerDay());
-        car.setRating(carDto.getRating());
-        car.setStatus(carDto.isStatus());
-        car.setYearOfProduction(carDto.getYearOfProduction());
-        car.setBrandCar(brandCarRepository.findOne(carDto.getId()));
-
+        car.setModel(carDtoSave.getModel());
+        car.setPricePerDay(carDtoSave.getPricePerDay());
+        car.setRating(carDtoSave.getRating());
+        car.setStatus(carDtoSave.isStatus());
+        car.setYearOfProduction(carDtoSave.getYearOfProduction());
+        car.setBrandCar(brandCarRepository.findOne(carDtoSave.getBrandId()));
         return car;
     }
 }

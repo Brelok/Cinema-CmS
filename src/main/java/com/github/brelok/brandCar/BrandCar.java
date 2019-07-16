@@ -22,4 +22,8 @@ public class BrandCar extends BaseEntity {
 
     private String brand;
 
+    @Override
+    public String toString() {
+        return brand;
+    }
 }

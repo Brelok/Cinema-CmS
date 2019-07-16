@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CarDto {
+public class CarDtoSave {
 
     private Long id;
 
@@ -37,11 +37,10 @@ public class CarDto {
 
     private List<String> additionsCar;
     private List<String> equipmentsCar;
-//    private Long brandId;
-    private String brandCarName;
+    private Long brandId;
 
 
-    public CarDto(Car that) {
+    public CarDtoSave(Car that) {
         this.id = that.getId();
         this.model = that.getModel();
         this.yearOfProduction = that.getYearOfProduction();
@@ -53,7 +52,7 @@ public class CarDto {
                 .map(AdditionsCar::getName).collect(Collectors.toList());
         this.equipmentsCar = that.getEquipmentsCars().stream()
                 .map(EquipmentsCar::getName).collect(Collectors.toList());
-        this.brandCarName = that.getBrandCar().toString();
+        this.brandId = that.getBrandCar().getId();
 
     }
 

@@ -24,7 +24,7 @@ public class Order extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Double totalprice;
+    private Double totalPrice;
     private LocalDate startRent;
 
     private LocalDate endRent;
@@ -39,7 +39,7 @@ public class Order extends BaseEntity {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", totalprice=" + totalprice +
+                ", totalprice=" + totalPrice +
                 ", startRent=" + startRent +
                 ", endRent=" + endRent +
                 ", car=" + car +
