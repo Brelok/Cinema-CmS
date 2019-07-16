@@ -2,12 +2,18 @@ package com.github.brelok.car;
 
 import com.github.brelok.additionsCar.AdditionsCar;
 import com.github.brelok.equipmentsCar.EquipmentsCar;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import sun.tools.asm.CatchData;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class CarDto {
 
     private Long id;
@@ -35,9 +41,6 @@ public class CarDto {
     private String brandCarName;
 
 
-    public CarDto() {
-    }
-
     public CarDto(Car that) {
         this.id = that.getId();
         this.model = that.getModel();
@@ -54,83 +57,4 @@ public class CarDto {
 
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public int getYearOfProduction() {
-        return yearOfProduction;
-    }
-
-    public void setYearOfProduction(int yearOfProduction) {
-        this.yearOfProduction = yearOfProduction;
-    }
-
-    public double getPricePerDay() {
-        return pricePerDay;
-    }
-
-    public void setPricePerDay(double pricePerDay) {
-        this.pricePerDay = pricePerDay;
-    }
-
-    public double getRating() {
-        return rating;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public String getClassCarName() {
-        return classCarName;
-    }
-
-    public void setClassCarName(String classCarName) {
-        this.classCarName = classCarName;
-    }
-
-    public List<String> getAdditionsCar() {
-        return additionsCar;
-    }
-
-    public void setAdditionsCar(List<String> additionsCar) {
-        this.additionsCar = additionsCar;
-    }
-
-    public List<String> getEquipmentsCar() {
-        return equipmentsCar;
-    }
-
-    public void setEquipmentsCar(List<String> equipmentsCar) {
-        this.equipmentsCar = equipmentsCar;
-    }
-
-    public String getBrandCarName() {
-        return brandCarName;
-    }
-
-    public void setBrandCarName(String brandCarName) {
-        this.brandCarName = brandCarName;
-    }
 }

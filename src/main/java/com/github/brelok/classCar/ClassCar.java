@@ -1,6 +1,9 @@
 package com.github.brelok.classCar;
 
 import com.github.brelok.BaseEntity;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class ClassCar extends BaseEntity {
 
     @Id
@@ -16,27 +22,4 @@ public class ClassCar extends BaseEntity {
 
     private String type;
 
-    public ClassCar() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    @Override
-    public String toString() {
-        return type;
-    }
 }

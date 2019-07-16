@@ -5,13 +5,18 @@ import com.github.brelok.brandCar.BrandCar;
 import com.github.brelok.classCar.ClassCar;
 import com.github.brelok.BaseEntity;
 import com.github.brelok.equipmentsCar.EquipmentsCar;
-import com.github.brelok.order.Order;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Car extends BaseEntity {
 
     @Id
@@ -45,82 +50,6 @@ public class Car extends BaseEntity {
     private BrandCar brandCar;
 
 
-    public Car() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-
-    public Double getPricePerDay() {
-        return pricePerDay;
-    }
-
-    public void setPricePerDay(Double pricePerDay) {
-        this.pricePerDay = pricePerDay;
-    }
-
-    public Double getRating() {
-        return rating;
-    }
-
-    public void setRating(Double rating) {
-        this.rating = rating;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public ClassCar getClassCar() {
-        return classCar;
-    }
-
-    public void setClassCar(ClassCar classCar) {
-        this.classCar = classCar;
-    }
-
-    public Set<AdditionsCar> getAdditionsCars() {
-        return additionsCars;
-    }
-
-    public void setAdditionsCars(Set<AdditionsCar> additionsCars) {
-        this.additionsCars = additionsCars;
-    }
-
-    public Set<EquipmentsCar> getEquipmentsCars() {
-        return equipmentsCars;
-    }
-
-    public void setEquipmentsCars(Set<EquipmentsCar> equipmentsCars) {
-        this.equipmentsCars = equipmentsCars;
-    }
-
-    public BrandCar getBrandCar() {
-        return brandCar;
-    }
-
-    public void setBrandCar(BrandCar brandCar) {
-        this.brandCar = brandCar;
-    }
-
     @Override
     public String toString() {
         return "Car{" +
@@ -137,11 +66,4 @@ public class Car extends BaseEntity {
                 '}';
     }
 
-    public Integer getYearOfProduction() {
-        return yearOfProduction;
-    }
-
-    public void setYearOfProduction(Integer yearOfProduction) {
-        this.yearOfProduction = yearOfProduction;
-    }
 }

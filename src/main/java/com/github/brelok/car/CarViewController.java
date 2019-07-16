@@ -31,7 +31,7 @@ public class CarViewController {
     @GetMapping("showAll")
     public String showAll(Model model){
        model.addAttribute("cars", carService.findAll());
-       return "cars";
+       return "btables";
     }
 
     @GetMapping("/add")

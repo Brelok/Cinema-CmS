@@ -6,8 +6,8 @@
 </head>
 <body>
 <table border="1">
-<h1>Cars list</h1>
-      <tr>
+    <h1>Cars list</h1>
+    <tr>
         <th>BRAND</th>
         <th>MODEL</th>
         <th>CLASS</th>
@@ -15,8 +15,9 @@
         <th>PRICE per DAY</th>
         <th>RATING</th>
         <th>STATUS</th>
-      </tr>
-      <tr th:each="car : ${cars}">
+        <th>ACTION</th>
+    </tr>
+    <tr th:each="car : ${cars}">
         <td th:text="${car.brandCarName}"></td>
         <td th:text="${car.model}"></td>
         <td th:text="${car.classCarName}"></td>
@@ -24,7 +25,7 @@
         <td th:text="${car.pricePerDay}"></td>
         <td th:text="${car.rating}"></td>
         <td th:text="${car.status}? #{true} : #{false}">yes</td>
-      </tr>
-    </table>
+    </tr>
+</table>
 </body>
 </html>

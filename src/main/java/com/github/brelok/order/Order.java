@@ -3,6 +3,10 @@ package com.github.brelok.order;
 import com.github.brelok.car.Car;
 import com.github.brelok.BaseEntity;
 import com.github.brelok.user.User;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -11,6 +15,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "orders")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Order extends BaseEntity {
 
     @Id
@@ -19,6 +26,7 @@ public class Order extends BaseEntity {
 
     private Double totalprice;
     private LocalDate startRent;
+
     private LocalDate endRent;
 
     @ManyToOne
@@ -26,33 +34,6 @@ public class Order extends BaseEntity {
 
     @ManyToOne
     private User user;
-
-    public Order() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Double getTotalprice() {
-        return totalprice;
-    }
-
-    public LocalDate getStartRent() {
-        return startRent;
-    }
-
-    public LocalDate getEndRent() {
-        return endRent;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public User getUser() {
-        return user;
-    }
 
     @Override
     public String toString() {
