@@ -15,6 +15,7 @@ public class BrandCarDto {
 
     public BrandCarDto (BrandCar that){
         this.id = that.getId();
+        this.brand = that.getBrand();
 
     }
 }

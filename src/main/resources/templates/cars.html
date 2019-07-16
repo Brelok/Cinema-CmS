@@ -53,7 +53,7 @@
                             <td th:text="${car.pricePerDay}">Price</td>
                             <td th:text="${car.rating}">Rating</td>
                             <td th:text="${car.status}? #{true} : #{false}">Status</td>
-<!--                            <td><a href></td>-->
+                            <td><a th:href="@{car/delete(id=${car.id})}" th:text="#{delete}">Delete car</a> </td>
                         </tr>
                         </tbody>
                     </table>

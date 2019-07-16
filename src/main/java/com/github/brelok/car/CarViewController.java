@@ -26,44 +26,52 @@ public class CarViewController {
         this.brandCarService = brandCarService;
         this.classCarService = classCarService;
     }
+
+    @GetMapping
+    public String showAll(Model model) {
+        model.addAttribute("cars", carService.findAll());
+        return "cars";
+    }
+
     @ModelAttribute("brands")
-    public List getAllBrand (){
+    public List getAllBrand() {
         return brandCarService.findAll();
     }
 
     @ModelAttribute("classCar")
-    public List getAllClass(){
+    public List getAllClass() {
         return classCarService.findAll();
     }
 
-    @GetMapping("showAll")
-    public String showAll(Model model){
-       model.addAttribute("cars", carService.findAll());
-       return "cars";
-    }
 
     @GetMapping("/add")
-    public String add(Model model){
+    public String add(Model model) {
         model.addAttribute("car", new CarDtoSave());
-        return "cars_add";
+        return "car_add";
     }
 
     @PostMapping("/add")
-    public String add(@ModelAttribute("carDto") @Valid CarDtoSave carDto){
+    public String add(@ModelAttribute("carDto") @Valid CarDtoSave carDto) {
         carService.createCar(carDto);
-        return "cars";
+        return "redirect:/car";
     }
 
     @GetMapping("/edit")
-    public String edit(Model model, @RequestParam Long id){
+    public String edit(Model model, @RequestParam Long id) {
         model.addAttribute("car", carService.findOneDto(id));
         return "car_edit";
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute("carDto") CarDtoSave carDto){
+    public String edit(@ModelAttribute("carDto") CarDtoSave carDto) {
         carService.editCar(carDto);
         return "cars_old";
+    }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam Long id) {
+        carService.delete(carService.findOne(id));
+        return "redirect:/car";
     }
 
 }

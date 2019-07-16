@@ -1,41 +1,86 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:form="http://www.w3.org/1999/html"
+      layout:decorator="template">
 <body>
-    <h1>Form car</h1>
-<form action="/car/add" th:object="${car}" method="post">
-    Brand:<input type="text" th:field="*{login}" /></br>
-    Model:<input type="text" th:field="*{model}" /></br>
-    Class:<input type="text" th:field="*{email}" /></br>
-    Year:<input type="text" th:field="*{yearOfProduction}" /></br>
-    Price per Day:<input type="text" th:field="*{pricePerDay}" /></br>
-    Status:<input type="text" th:field="*{status}" /></br>
-    <input type="submit" value="Submit" />
+<section layout:fragment="content">
 
-</form>
-<th:
-    <tr>
-        <th>BRAND</th>
-        <th>MODEL</th>
-        <th>CLASS</th>
-        <th>YEAR</th>
-        <th>PRICE per DAY</th>
-        <th>RATING</th>
-        <th>STATUS</th>
-        <th>ACTION</th>
-    </tr>
-    <tr th:each="car : ${cars}">
-        <td th:text="${car.brandCarName}"></td>
-        <td th:text="${car.model}"></td>
-        <td th:text="${car.classCarName}"></td>
-        <td th:text="${car.yearOfProduction}"></td>
-        <td th:text="${car.pricePerDay}"></td>
-        <td th:text="${car.rating}"></td>
-        <td th:text="${car.status}? #{true} : #{false}">yes</td>
-    </tr>
-</table>
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Add Cars</h1>
+        <p class="mb-4" th:text="#{textAboutCarsForm}"></p>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary"></h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <form class="table table-bordered" id="dataTable" width="100%" cellspacing="0"
+                          action="/car/add" th:object="${car}" method="post">
+                        <p>Brand:
+                            <select th:field="*{brandId}">
+                                <option th:each="brand : ${brands}" th:value="${brand.id}" th:text="${brand}"></option>
+                            </select>
+                        </p>
+                        <p>Model:<input type="text" th:field="*{model}"/></p>
+                        <p>Class:<select th:field="*{classCarName}">
+                            <option th:each="class : ${classCar}" th:value="class" th:text="${class}"></option>
+                        </select>
+                        </p>
+                        <p>Year:<input type="text" th:field="*{yearOfProduction}"/></p>
+                        <p>Price per Day:<input type="text" th:field="*{pricePerDay}"/></p>
+                        <p>Status:<select th:field="*{status}">
+                            <option th:value="true" th:text="available"></option>
+                            <option th:value="false" th:text="unavailable"></option>
+                        </select></p>
+                        <input type="submit" value="Submit"/>
+                    </form>
+                    <!--                        <thead>-->
+                    <!--                        <tr>-->
+                    <!--                            <th>Brand</th>-->
+                    <!--                            <th>Model</th>-->
+                    <!--                            <th>Class</th>-->
+                    <!--                            <th>Year</th>-->
+                    <!--                            <th>Price per day</th>-->
+                    <!--                            <th>Rating</th>-->
+                    <!--                            <th>Status</th>-->
+                    <!--                            <th>Action</th>-->
+                    <!--                        </tr>-->
+                    <!--                        </thead>-->
+                    <!--                        <tfoot>-->
+                    <!--                        <tr>-->
+                    <!--                            <th>Brand</th>-->
+                    <!--                            <th>Model</th>-->
+                    <!--                            <th>Class</th>-->
+                    <!--                            <th>Year</th>-->
+                    <!--                            <th>Price per day</th>-->
+                    <!--                            <th>Rating</th>-->
+                    <!--                            <th>Status</th>-->
+                    <!--                            <th>Action</th>-->
+                    <!--                        </tr>-->
+                    <!--                        </tfoot>-->
+                    <!--                        <tbody>-->
+                    <!--                        <tr th:each="car : ${cars}">-->
+                    <!--                            <td th:text="${car.brandCarName}">Brand</td>-->
+                    <!--                            <td th:text="${car.model}">Model</td>-->
+                    <!--                            <td th:text="${car.classCarName}">Class</td>-->
+                    <!--                            <td th:text="${car.yearOfProduction}">Year</td>-->
+                    <!--                            <td th:text="${car.pricePerDay}">Price</td>-->
+                    <!--                            <td th:text="${car.rating}">Rating</td>-->
+                    <!--                            <td th:text="${car.status}? #{true} : #{false}">Status</td>-->
+                    <!--                            <td><a href=""</td>-->
+                    <!--                        </tr>-->
+                    <!--                        </tbody>-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+</section>
 </body>
 </html>

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -18,6 +19,11 @@ public class ClassCarService {
     }
 
     public List findAll(){
-        return classCarRepository.findAll();
+
+        List <ClassCar> classCar = classCarRepository.findAll();
+
+        return classCar.stream()
+                .map(ClassCarDto::new)
+                .collect(Collectors.toList());
     }
 }
