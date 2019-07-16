@@ -18,9 +18,9 @@ public class ClassCarService {
         this.classCarRepository = classCarRepository;
     }
 
-    public List findAll(){
+    public List findAll() {
 
-        List <ClassCar> classCar = classCarRepository.findAll();
+        List<ClassCar> classCar = classCarRepository.findAll();
 
         return classCar.stream()
                 .map(ClassCarDto::new)

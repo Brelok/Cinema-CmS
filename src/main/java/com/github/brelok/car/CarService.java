@@ -126,4 +126,11 @@ public class CarService {
                 .filter(carDtoDisplay -> carDtoDisplay.getBrandName().equals(name))
                 .collect(Collectors.toList());
     }
+
+    public List findAllCarByClassNaem(String name){
+        return carRepository.findAll().stream()
+                .map(CarDtoDisplay::new)
+                .filter(carDtoDisplay -> carDtoDisplay.getClassCarName().equals(name))
+                .collect(Collectors.toList());
+    }
 }

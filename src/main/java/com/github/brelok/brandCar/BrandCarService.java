@@ -17,7 +17,7 @@ public class BrandCarService {
     private BrandCarRepository brandCarRepository;
 
     @Autowired
-    public BrandCarService(BrandCarRepository brandCarRepository, CarService carService) {
+    public BrandCarService(BrandCarRepository brandCarRepository) {
         this.brandCarRepository = brandCarRepository;
     }
 
