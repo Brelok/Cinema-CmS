@@ -63,9 +63,9 @@ public class CarViewController {
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute("carDto") CarDtoSave carDto) {
+    public String edit(@ModelAttribute("carDto") @Valid CarDtoSave carDto) {
         carService.editCar(carDto);
-        return "cars_old";
+        return "redirect:/car";
     }
 
     @GetMapping("/delete")
