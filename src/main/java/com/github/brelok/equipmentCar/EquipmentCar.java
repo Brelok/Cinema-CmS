@@ -28,4 +28,13 @@ public class EquipmentCar extends BaseEntity {
     @ManyToMany(mappedBy = "equipmentsCars")
     private Set<Car> cars = new HashSet<>();
 
+    @Override
+    public String toString() {
+        return "EquipmentCar{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", cars=" + cars +
+                '}';
+    }
 }
