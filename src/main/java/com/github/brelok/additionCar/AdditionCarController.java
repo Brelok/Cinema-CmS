@@ -1,5 +1,6 @@
 package com.github.brelok.additionCar;
 
+import com.github.brelok.car.CarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +12,11 @@ import javax.validation.Valid;
 public class AdditionCarController {
 
     private AdditionCarService additionsCarService;
+    private CarService carService;
 
-    public AdditionCarController(AdditionCarService additionsCarService) {
+    public AdditionCarController(AdditionCarService additionsCarService, CarService carService) {
         this.additionsCarService = additionsCarService;
+        this.carService = carService;
     }
 
     @GetMapping

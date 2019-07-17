@@ -17,19 +17,12 @@ public class AdditionCarDtoDisplay {
     private String name;
     private String description;
     private Integer quantity;
-    private List <String> carsName;
 
     public AdditionCarDtoDisplay(AdditionCar that){
         this.id = that.getId();
         this.name = that.getName();
         this.description = that.getDescription();
         this.quantity = that.getQuantity();
-        this.carsName = that.getCars().stream()
-                .map(Car::getAdditionsCars)
-                .map(Object::toString)
-                .collect(Collectors.toList());
-
-
 
     }
 }

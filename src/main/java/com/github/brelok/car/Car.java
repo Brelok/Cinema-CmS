@@ -34,12 +34,6 @@ public class Car extends BaseEntity {
     private ClassCar classCar;
 
     @ManyToMany
-    @JoinTable(name = "car_additionCar",
-            joinColumns = @JoinColumn(name = "car_id"),
-            inverseJoinColumns = @JoinColumn(name = "additionalCar_id"))
-    private Set <AdditionCar> additionsCars = new HashSet<>();
-
-    @ManyToMany
     @JoinTable(name = "car_equipmentCar",
             joinColumns = @JoinColumn(name = "car_id"),
             inverseJoinColumns = @JoinColumn(name = "equipmentCar_id"))
@@ -60,7 +54,6 @@ public class Car extends BaseEntity {
                 ", rating=" + rating +
                 ", status=" + status +
                 ", classCar=" + classCar +
-                ", additionsCars=" + additionsCars +
                 ", equipmentsCars=" + equipmentsCars +
                 ", brandCar=" + brandCar +
                 '}';

@@ -34,7 +34,6 @@ public class CarDtoDisplay {
     @NotNull
     private String classCarName;
 
-    private List<String> additionsCar;
     private List<String> equipmentsCar;
     private String brandName;
 
@@ -47,8 +46,6 @@ public class CarDtoDisplay {
         this.rating = that.getRating();
         this.status = that.isStatus();
         this.classCarName = that.getClassCar().toString();
-        this.additionsCar = that.getAdditionsCars().stream()
-                .map(AdditionCar::getName).collect(Collectors.toList());
         this.equipmentsCar = that.getEquipmentsCars().stream()
                 .map(EquipmentCar::getName).collect(Collectors.toList());
         this.brandName = that.getBrandCar().toString();

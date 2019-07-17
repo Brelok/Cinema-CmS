@@ -34,7 +34,6 @@ public class CarDtoSave {
     @NotNull
     private Long classCarId;
 
-    private List<String> additionsCar;
     private List<String> equipmentsCar;
     private Long brandId;
 
@@ -47,8 +46,6 @@ public class CarDtoSave {
         this.rating = that.getRating();
         this.status = that.isStatus();
         this.classCarId = that.getClassCar().getId();
-        this.additionsCar = that.getAdditionsCars().stream()
-                .map(AdditionCar::getName).collect(Collectors.toList());
         this.equipmentsCar = that.getEquipmentsCars().stream()
                 .map(EquipmentCar::getName).collect(Collectors.toList());
         this.brandId = that.getBrandCar().getId();

@@ -1,5 +1,6 @@
 package com.github.brelok.order;
 
+import com.github.brelok.additionCar.AdditionCar;
 import com.github.brelok.car.Car;
 import com.github.brelok.BaseEntity;
 import com.github.brelok.user.User;
@@ -35,15 +36,22 @@ public class Order extends BaseEntity {
     @ManyToOne
     private User user;
 
+    @ManyToMany
+    @JoinTable(name = "order_additionCar",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "additionalCar_id"))
+    private Set <AdditionCar> additionsCars = new HashSet<>();
+
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", totalprice=" + totalPrice +
+                ", totalPrice=" + totalPrice +
                 ", startRent=" + startRent +
                 ", endRent=" + endRent +
                 ", car=" + car +
                 ", user=" + user +
+                ", additionsCars=" + additionsCars +
                 '}';
     }
 }

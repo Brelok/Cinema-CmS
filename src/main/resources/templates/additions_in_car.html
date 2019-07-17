@@ -16,8 +16,6 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">
-                    <a th:href="@{/addition/add}" th:text="#{addAddition}">Add additions</a>
-<!--                    <a style="margin-left:3em" th:href="@{/addition/car}" th:text="#{Addition_user}">Additions car</a> &lt;!&ndash; to do when order &ndash;&gt;-->
                 </h6>
             </div>
             <div class="card-body">
@@ -40,12 +38,12 @@
                         </tr>
                         </tfoot>
                         <tbody>
-                        <tr th:each="add : ${addition}">
-                            <td th:text="${add.name}">Brand</td>
-                            <td th:text="${add.description}">Model</td>
-                            <td th:text="${add.quantity}">Class</td>
-                            <td><a th:href="@{addition/delete(id=${add.id})}" th:text="#{delete}">Delete add</a>
-                                <a th:href="@{addition/edit(id=${add.id})}" th:text="#{edit}">Edit add</a>
+                        <tr th:each="add : ${addsInCar}">
+                            <td th:text="${add.id}">Brand</td>
+<!--                            <td th:text="${add.description}">Model</td>-->
+<!--                            <td th:text="${add.quantity}">Class</td>-->
+<!--                            <td><a th:href="@{addition/delete(id=${add.id})}" th:text="#{delete}">Delete add</a>-->
+<!--                                <a th:href="@{addition/edit(id=${add.id})}" th:text="#{edit}">Edit add</a>-->
                             </td>
                         </tr>
                         </tbody>
