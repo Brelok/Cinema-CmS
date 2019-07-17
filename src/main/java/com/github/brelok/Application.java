@@ -36,4 +36,14 @@ public class Application {
                 .title("Rent a car")
                 .build();
     }
+
+    /*
+    from Bealdung about time
+     */
+//    private ISpringTemplateEngine templateEngine(ITemplateResolver templateResolver) {
+//    SpringTemplateEngine engine = new SpringTemplateEngine();
+//    engine.addDialect(new Java8TimeDialect());
+//    engine.setTemplateResolver(templateResolver);
+//    return engine;
+//}
 }

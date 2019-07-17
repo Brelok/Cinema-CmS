@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="template">
+<body>
+<section layout:fragment="content">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Orders</h1>
+        <p class="mb-4" th:text="#{textAboutOrders}"></p>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary"><a th:href="@{/order/add}" th:text="#{addOrder}">Add
+                    Order</a></h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Start rent</th>
+                            <th>End rent</th>
+                            <th>Car</th>
+                            <th>User</th>
+                            <th>List additions</th>
+                            <th>Total price</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>Id</th>
+                            <th>Start rent</th>
+                            <th>End rent</th>
+                            <th>Car</th>
+                            <th>User</th>
+                            <th>List additions</th>
+                            <th>Total price</th>
+                            <th>Action</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        <tr th:each="order : ${orders}">
+                            <td th:text="${order.id}">Id</td>
+                            <td th:text="${order.startRent}">Start rent</td>
+                            <td th:text="${order.endRent}">End rent</td>
+                            <td th:text="${order.carName}">Car</td>
+                            <td th:text="${order.userName}">User</td>
+                            <td th:each="addition: ${additionsList}" th:text="${addition}">Additions</td>
+                            <td th:text="${order.totalPrice}">Total price</td>
+                            <td><a th:href="@{car/delete(id=${order.id})}" th:text="#{delete}">Delete order</a>
+                                <a th:href="@{car/edit(id=${order.id})}" th:text="#{edit}">Edit order</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+</section>
+</body>
+</html>

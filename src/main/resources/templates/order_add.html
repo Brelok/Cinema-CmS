@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:form="http://www.w3.org/1999/html"
+      layout:decorator="template">
+<body>
+<section layout:fragment="content">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Add Order</h1>
+        <p class="mb-4" th:text="#{textAboutOrderForm}"></p>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary"></h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <form class="table table-bordered" id="dataTable" width="100%" cellspacing="0"
+                          action="/order/add" th:object="${order}" method="post">
+                        <p>Start rent: <input type="text" th:field="*{startRent}" th:placeholder="yyyy-MM-dd"/></p>
+                        <p>End rent: <input type="text" th:field="*{endRent}" th:placeholder="yyyy-MM-dd"/></p>
+                        <p>Class: <select th:field="*{carId}">
+                            <option th:each="car : ${cars}" th:value="${car.id}" th:text="${car.model}"></option>
+                        </select>
+                        </p>
+                        <p>User: <select th:field="*{userId}">
+                            <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.lastName}"></option>
+                        </select>
+                        </p>
+                        <p>Additions:</p>
+                        <ul>
+                            <li th:each="add: ${additions}">
+                                <input type="checkbox" th:field="${order.additionsId}" th:value="${add.id}"
+                                       th:text="${add.name}">
+                            </li>
+                        </ul>
+                        <input type="submit" value="Submit"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+</section>
+</body>
+</html>
