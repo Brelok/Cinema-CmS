@@ -9,7 +9,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Add Addition</h1>
+        <h1 class="h3 mb-2 text-gray-800">Edit Addition</h1>
         <p class="mb-4" th:text="#{textAboutAdditionForm}"></p>
 
         <!-- DataTales Example -->
@@ -20,8 +20,8 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <form class="table table-bordered" id="dataTable" width="100%" cellspacing="0"
-                          action="/addition/add" th:object="${add}" method="post">
-
+                          action="/addition/edit" th:object="${add}" method="post">
+                         <input type="hidden" th:value="*{id}" th:field="*{id}">
                         <p>Name: <input type="text" th:field="*{name}"/></p>
                         <p>Descritpion: <input type="text" th:field="*{description}"/></p>
                         <p>Quantity: <input type="text" th:field="*{quantity}"/></p>

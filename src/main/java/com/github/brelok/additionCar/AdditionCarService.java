@@ -25,33 +25,50 @@ public class AdditionCarService {
         this.carRepository = carRepository;
     }
 
-    public List findAll(){
-        List <AdditionCar> list = additionCarRepository.findAll();
+    public List findAll() {
+        List<AdditionCar> list = additionCarRepository.findAll();
 
         return list.stream()
                 .map(AdditionCarDtoDisplay::new)
                 .collect(Collectors.toList());
     }
 
-    public void createAddition (AdditionCarDtoSave additionCarDtoSave){
+    public void createAddition(AdditionCarDtoSaveForm additionCarDtoSaveForm) {
         AdditionCar additionCar = new AdditionCar();
-
-       additionCar.setName(additionCarDtoSave.getName());
-       additionCar.setDescription(additionCarDtoSave.getDescription());
-       additionCar.setQuantity(additionCarDtoSave.getQuantity());
-       additionCar.getCars().addAll(changeAdditionsCarDTOSaveToAdditionsCar(additionCarDtoSave.getCarsId()));
-
-       additionCarRepository.save(additionCar);
+        additionCarRepository.save(setValueAdditionCarFromAdditionCarDTOSaveForm(additionCar,additionCarDtoSaveForm));
     }
 
-    public Set<Car> changeAdditionsCarDTOSaveToAdditionsCar(Long [] additions){
-        List <Car> list = new ArrayList<>();
+    public Set<Car> changeAdditionsCarDTOSaveToAdditionsCar(Long[] additions) {
+        List<Car> list = new ArrayList<>();
 
-        for (Long along : additions){
+        for (Long along : additions) {
             list.add(carRepository.findOne(along));
         }
 
         return new HashSet<>(list);
+    }
+
+    public void delete(Long id) {
+        additionCarRepository.delete(id);
+    }
+
+    public void editAddition(AdditionCarDtoSaveForm additionCarDtoSaveForm){
+        AdditionCar existing = additionCarRepository.findOne(additionCarDtoSaveForm.getId());
+
+        additionCarRepository.save(setValueAdditionCarFromAdditionCarDTOSaveForm(existing, additionCarDtoSaveForm));
+    }
+
+    public AdditionCar setValueAdditionCarFromAdditionCarDTOSaveForm(AdditionCar additionCar,
+                                                                     AdditionCarDtoSaveForm additionCarDtoSaveForm) {
+        additionCar.setName(additionCarDtoSaveForm.getName());
+        additionCar.setDescription(additionCarDtoSaveForm.getDescription());
+        additionCar.setQuantity(additionCarDtoSaveForm.getQuantity());
+
+        return additionCar;
+    }
+
+    public AdditionCarDtoSaveForm findOneDtoSaveForm (Long id){
+        return new AdditionCarDtoSaveForm(additionCarRepository.findOne(id));
     }
 
 }
