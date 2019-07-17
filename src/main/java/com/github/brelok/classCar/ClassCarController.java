@@ -2,7 +2,6 @@ package com.github.brelok.classCar;
 
 import com.github.brelok.car.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +29,8 @@ public class ClassCarController {
 
     @GetMapping("/car")
     public String allCarsofClass(Model model, @RequestParam String name){
-        model.addAttribute("class", carService.findAllCarByClassNaem(name));
+        model.addAttribute("classesCar", carService.findAllCarByClassName(name));
+        model.addAttribute("nameClass", name);
         return "car_classes";
     }
 }

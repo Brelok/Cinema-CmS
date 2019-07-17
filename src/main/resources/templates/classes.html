@@ -35,7 +35,7 @@
                         <tbody>
                         <tr th:each="classCar : ${classesCar}">
                             <td th:text="${classCar.type}">Class</td>
-                            <td><a th:href="@{class/car(name=${class})}" th:text="#{showAll}">Show</a>
+                            <td><a th:href="@{class/car(name=${classCar})}" th:text="#{showAll}">Show</a>
                             </td>
                         </tr>
                         </tbody>

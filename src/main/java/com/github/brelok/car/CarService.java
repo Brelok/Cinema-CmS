@@ -132,7 +132,7 @@ public class CarService {
                 .collect(Collectors.toList());
     }
 
-    public List findAllCarByClassNaem(String name){
+    public List findAllCarByClassName(String name){
         return carRepository.findAll().stream()
                 .map(CarDtoDisplay::new)
                 .filter(carDtoDisplay -> carDtoDisplay.getClassCarName().equals(name))

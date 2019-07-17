@@ -9,7 +9,7 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">All classes</h1>
+        <h1 class="h3 mb-2 text-gray-800" th:text="${nameClass}">Class car</h1>
         <p class="mb-4" th:text="#{textAboutCarsClass}"></p>
 
         <!-- DataTales Example -->
@@ -41,8 +41,8 @@
                         </tr>
                         </tfoot>
                         <tbody>
-                        <tr th:each="car : ${class}">
-                            <td th:text="${car.brand}">Brand</td>
+                        <tr th:each="car : ${classesCar}">
+                            <td th:text="${car.brandName}">Brand</td>
                             <td th:text="${car.model}">Model</td>
                             <td th:text="${car.yearOfProduction}">Year</td>
                             <td th:text="${car.pricePerDay}">Price</td>
