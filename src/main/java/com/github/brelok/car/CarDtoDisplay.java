@@ -1,7 +1,7 @@
 package com.github.brelok.car;
 
-import com.github.brelok.additionsCar.AdditionsCar;
-import com.github.brelok.equipmentsCar.EquipmentsCar;
+import com.github.brelok.additionCar.AdditionCar;
+import com.github.brelok.equipmentCar.EquipmentCar;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -48,9 +48,9 @@ public class CarDtoDisplay {
         this.status = that.isStatus();
         this.classCarName = that.getClassCar().toString();
         this.additionsCar = that.getAdditionsCars().stream()
-                .map(AdditionsCar::getName).collect(Collectors.toList());
+                .map(AdditionCar::getName).collect(Collectors.toList());
         this.equipmentsCar = that.getEquipmentsCars().stream()
-                .map(EquipmentsCar::getName).collect(Collectors.toList());
+                .map(EquipmentCar::getName).collect(Collectors.toList());
         this.brandName = that.getBrandCar().toString();
 
     }

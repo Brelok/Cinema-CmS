@@ -1,10 +1,10 @@
 package com.github.brelok.car;
 
-import com.github.brelok.additionsCar.AdditionsCar;
+import com.github.brelok.additionCar.AdditionCar;
 import com.github.brelok.brandCar.BrandCar;
 import com.github.brelok.classCar.ClassCar;
 import com.github.brelok.BaseEntity;
-import com.github.brelok.equipmentsCar.EquipmentsCar;
+import com.github.brelok.equipmentCar.EquipmentCar;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -34,16 +34,16 @@ public class Car extends BaseEntity {
     private ClassCar classCar;
 
     @ManyToMany
-    @JoinTable(name = "car_additionsCar",
+    @JoinTable(name = "car_additionCar",
             joinColumns = @JoinColumn(name = "car_id"),
-            inverseJoinColumns = @JoinColumn(name = "additionalsCar_id"))
-    private Set <AdditionsCar> additionsCars = new HashSet<>();
+            inverseJoinColumns = @JoinColumn(name = "additionalCar_id"))
+    private Set <AdditionCar> additionsCars = new HashSet<>();
 
     @ManyToMany
-    @JoinTable(name = "car_equipmentsCar",
+    @JoinTable(name = "car_equipmentCar",
             joinColumns = @JoinColumn(name = "car_id"),
-            inverseJoinColumns = @JoinColumn(name = "equipmentsCar_id"))
-    private Set<EquipmentsCar> equipmentsCars = new HashSet<>();
+            inverseJoinColumns = @JoinColumn(name = "equipmentCar_id"))
+    private Set<EquipmentCar> equipmentsCars = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "brandCar_id")

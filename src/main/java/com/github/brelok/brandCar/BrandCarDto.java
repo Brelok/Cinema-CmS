@@ -18,4 +18,9 @@ public class BrandCarDto {
         this.brand = that.getBrand();
 
     }
+
+    @Override
+    public String toString() {
+        return brand;
+    }
 }

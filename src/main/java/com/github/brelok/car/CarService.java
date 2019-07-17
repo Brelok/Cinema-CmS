@@ -1,11 +1,10 @@
 package com.github.brelok.car;
 
 import com.github.brelok.brandCar.BrandCarRepository;
-import javafx.scene.transform.MatrixType;
+import com.github.brelok.classCar.ClassCarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sun.tools.tree.DoubleExpression;
 
 import java.util.List;
 import java.util.Set;
@@ -18,11 +17,13 @@ public class CarService {
 
     private CarRepository carRepository;
     private BrandCarRepository brandCarRepository;
+    private ClassCarRepository classCarRepository;
 
     @Autowired
-    public CarService(CarRepository carRepository, BrandCarRepository brandCarRepository) {
+    public CarService(CarRepository carRepository, BrandCarRepository brandCarRepository, ClassCarRepository classCarRepository) {
         this.carRepository = carRepository;
         this.brandCarRepository = brandCarRepository;
+        this.classCarRepository = classCarRepository;
     }
 
     public List findAll() {
@@ -46,8 +47,11 @@ public class CarService {
     }
 
     public Long countAvailableCar() {
-        return carRepository.findAll().stream()
-                .filter(car -> car.isStatus() == true).count();
+        return carRepository.countByStatus(true);
+    }
+
+     public Long countRentCar() {
+        return carRepository.countByStatus(false);
     }
 
     public Long countAllCars(){
@@ -104,6 +108,7 @@ public class CarService {
         car.setStatus(carDtoSave.isStatus());
         car.setYearOfProduction(carDtoSave.getYearOfProduction());
         car.setBrandCar(brandCarRepository.findOne(carDtoSave.getBrandId()));
+        car.setClassCar(classCarRepository.findOne(carDtoSave.getClassCarId()));
         return car;
     }
 

@@ -1,4 +1,4 @@
-package com.github.brelok.additionsCar;
+package com.github.brelok.additionCar;
 
 import com.github.brelok.BaseEntity;
 import com.github.brelok.car.Car;
@@ -14,7 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AdditionsCar extends BaseEntity {
+public class AdditionCar extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,19 @@ public class AdditionsCar extends BaseEntity {
     @Column(length = 1500)
     private String description;
 
+    private Integer quantity;
+
     @ManyToMany(mappedBy = "additionsCars")
     private Set<Car> cars = new HashSet<>();
 
+    @Override
+    public String toString() {
+        return "AdditionsCar{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", quantity=" + quantity +
+                ", cars=" + cars +
+                '}';
+    }
 }

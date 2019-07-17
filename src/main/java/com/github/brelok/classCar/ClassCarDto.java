@@ -17,4 +17,9 @@ public class ClassCarDto {
         this.type = that.getType();
 
     }
+
+    @Override
+    public String toString() {
+        return type;
+    }
 }

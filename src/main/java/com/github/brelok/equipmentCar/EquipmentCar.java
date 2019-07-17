@@ -1,4 +1,4 @@
-package com.github.brelok.equipmentsCar;
+package com.github.brelok.equipmentCar;
 
 import com.github.brelok.BaseEntity;
 import com.github.brelok.car.Car;
@@ -14,7 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-public class EquipmentsCar extends BaseEntity {
+public class EquipmentCar extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

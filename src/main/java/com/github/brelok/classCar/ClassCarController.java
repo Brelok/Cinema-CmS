@@ -24,7 +24,7 @@ public class ClassCarController {
 
     @GetMapping
     public String getAll(Model model){
-        model.addAttribute("classes", classCarService.findAll());
+        model.addAttribute("classesCar", classCarService.findAll());
         return "classes";
     }
 

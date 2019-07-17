@@ -20,20 +20,20 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <form class="table table-bordered" id="dataTable" width="100%" cellspacing="0"
-                          action="/car/add" th:object="${car}" method="post">
+                          action="/car/add" th:object="${adds}" method="post">
                         <p>Brand:
-                            <select th:field="*{brandId}">
+                            <select th:field="*{name}">
                                 <option th:each="brand : ${brands}" th:value="${brand.id}" th:text="${brand}"></option>
                             </select>
                         </p>
-                        <p>Model: <input type="text" th:field="*{model}"/></p>
-                        <p>Class: <select th:field="*{classCarId}">
-                            <option th:each="classCar : ${classCar}" th:value="${classCar.id}" th:text="${classCar}"></option>
+                        <p>Model:<input type="text" th:field="*{model}"/></p>
+                        <p>Class:<select th:field="*{classCarName}">
+                            <option th:each="class : ${classCar}" th:value="class" th:text="${class}"></option>
                         </select>
                         </p>
-                        <p>Year: <input type="text" th:field="*{yearOfProduction}"/></p>
-                        <p>Price per Day: <input type="text" th:field="*{pricePerDay}"/></p>
-                        <p>Status: <select th:field="*{status}">
+                        <p>Year:<input type="text" th:field="*{yearOfProduction}"/></p>
+                        <p>Price per Day:<input type="text" th:field="*{pricePerDay}"/></p>
+                        <p>Status:<select th:field="*{status}">
                             <option th:value="true" th:text="available"></option>
                             <option th:value="false" th:text="unavailable"></option>
                         </select></p>

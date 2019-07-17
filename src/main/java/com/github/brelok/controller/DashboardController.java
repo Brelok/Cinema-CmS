@@ -20,11 +20,12 @@ public class DashboardController {
 
     @GetMapping
     public String dashboard(Model model) {
-        model.addAttribute("car", carService.countAvailableCar());
+        model.addAttribute("free", carService.countAvailableCar());
         model.addAttribute("count", carService.countAllCars());
-        model.addAttribute("avarage", carService.avarageRating());
+        model.addAttribute("rented", carService.countRentCar());
+        model.addAttribute("avarage", Math.round(carService.avarageRating()));
         model.addAttribute("avarageYear", carService.AvarageYear());
-        model.addAttribute("avaragePrice", carService.avaragePrice());
+        model.addAttribute("avaragePrice", Math.round(carService.avaragePrice()));
         return "dashboard";
     }
 }

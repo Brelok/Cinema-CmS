@@ -1,11 +1,10 @@
 package com.github.brelok.car;
 
-import com.github.brelok.additionsCar.AdditionsCar;
-import com.github.brelok.equipmentsCar.EquipmentsCar;
+import com.github.brelok.additionCar.AdditionCar;
+import com.github.brelok.equipmentCar.EquipmentCar;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import sun.tools.asm.CatchData;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -33,7 +32,7 @@ public class CarDtoSave {
     private boolean status;
 
     @NotNull
-    private String classCarName;
+    private Long classCarId;
 
     private List<String> additionsCar;
     private List<String> equipmentsCar;
@@ -47,11 +46,11 @@ public class CarDtoSave {
         this.pricePerDay = that.getPricePerDay();
         this.rating = that.getRating();
         this.status = that.isStatus();
-        this.classCarName = that.getClassCar().toString();
+        this.classCarId = that.getClassCar().getId();
         this.additionsCar = that.getAdditionsCars().stream()
-                .map(AdditionsCar::getName).collect(Collectors.toList());
+                .map(AdditionCar::getName).collect(Collectors.toList());
         this.equipmentsCar = that.getEquipmentsCars().stream()
-                .map(EquipmentsCar::getName).collect(Collectors.toList());
+                .map(EquipmentCar::getName).collect(Collectors.toList());
         this.brandId = that.getBrandCar().getId();
 
     }
