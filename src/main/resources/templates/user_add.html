@@ -9,8 +9,8 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800"th:text="#{editAddition(${add.name})}">Edit Addition</h1>
-        <p class="mb-4" th:text="#{textAboutAdditionEditForm}"></p>
+        <h1 class="h3 mb-2 text-gray-800">Add User</h1>
+        <p class="mb-4" th:text="#{textAboutUserForm}"></p>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
@@ -20,12 +20,12 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <form class="table table-bordered" id="dataTable" width="100%" cellspacing="0"
-                          action="/addition/edit" th:object="${add}" method="post">
-                         <input type="hidden" th:value="*{id}" th:field="*{id}">
-                        <p>Name: <input type="text" th:field="*{name}"/></p>
-                        <p>Descritpion: <input type="text" th:field="*{description}"/></p>
-                        <p>Quantity: <input type="text" th:field="*{quantity}"/></p>
-
+                          action="/user/add" th:object="${user}" method="post">
+                        <p>First name : <input type="text" th:field="*{firstName}"/></p>
+                        <p>Last name: <input type="text" th:field="*{lastName}"/></p>
+                        <p>Email: <input type="text" th:field="*{email}"/></p>
+                        <p>Login: <input type="text" th:field="*{login}"/></p>
+                        <p>Password: <input type="text" th:field="*{password}"/></p>
                         <input type="submit" value="Submit"/>
                     </form>
                 </div>

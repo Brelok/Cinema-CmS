@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="template">
+<body>
+<section layout:fragment="content">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Users</h1>
+        <p class="mb-4" th:text="#{textAboutUsers}"></p>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary"><a th:href="@{/user/add}" th:text="#{addUser}">Add User</a></h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Email</th>
+                            <th>Login</th>
+<!--                            <th>Password</th>-->
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                          <th>First name</th>
+                            <th>Last name</th>
+                            <th>Email</th>
+                            <th>Login</th>
+<!--                            <th>Password</th>-->
+                            <th>Action</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        <tr th:each="user : ${users}">
+                            <td th:text="${user.firstName}">First Name</td>
+                            <td th:text="${user.lastName}">Last Name</td>
+                            <td th:text="${user.email}">Email</td>
+                            <td th:text="${user.login}">Login</td>
+<!--                            <td th:text="${user.password}">Password</td>-->
+                            <td><a th:href="@{user/delete(id=${user.id})}" th:text="#{delete}">Delete car</a>
+                                <a th:href="@{user/edit(id=${user.id})}" th:text="#{edit}">Edit car</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+</section>
+</body>
+</html>

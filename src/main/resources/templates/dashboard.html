@@ -92,7 +92,7 @@
                                      th:text="#{avarage}">
                                     Avarage
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${avarage}">number</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${#numbers.formatDecimal(avarage,1,2)}">number</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -130,7 +130,7 @@
                                      th:text="#{avaragePrice}">
                                     Avarage price
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${avaragePrice}">number</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${#numbers.formatDecimal(avaragePrice,3,2)}">number</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>

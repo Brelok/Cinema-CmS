@@ -1,6 +1,5 @@
 package com.github.brelok.car;
 
-import com.github.brelok.additionCar.AdditionCar;
 import com.github.brelok.equipmentCar.EquipmentCar;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

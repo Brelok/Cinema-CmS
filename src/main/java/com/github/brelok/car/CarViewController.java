@@ -4,6 +4,7 @@ import com.github.brelok.brandCar.BrandCarRepository;
 import com.github.brelok.brandCar.BrandCarService;
 import com.github.brelok.classCar.ClassCarRepository;
 import com.github.brelok.classCar.ClassCarService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/car")
+@Slf4j
 public class CarViewController {
 
     private CarService carService;
@@ -52,8 +54,8 @@ public class CarViewController {
     }
 
     @PostMapping("/add")
-    public String add(@ModelAttribute("carDto") @Valid CarDtoSave carDto) {
-        carService.createCar(carDto);
+    public String add(@ModelAttribute("carDto") @Valid CarDtoSave carDtoSave) {
+        carService.createCar(carDtoSave);
         return "redirect:/car";
     }
 
@@ -71,6 +73,8 @@ public class CarViewController {
 
     @GetMapping("/delete")
     public String delete(@RequestParam Long id) {
+        log.info("id: {}", id);
+//        log.info("id:" +  id); //drugi sposób
         carService.delete(carService.findOne(id));
         return "redirect:/car";
     }

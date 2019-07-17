@@ -1,6 +1,5 @@
 package com.github.brelok.car;
 
-import com.github.brelok.additionCar.AdditionCar;
 import com.github.brelok.brandCar.BrandCar;
 import com.github.brelok.classCar.ClassCar;
 import com.github.brelok.BaseEntity;
@@ -22,6 +21,8 @@ public class Car extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+   
 
     private String model;
     private int yearOfProduction;
