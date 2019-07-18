@@ -3,7 +3,7 @@ package com.github.brelok.order;
 import com.github.brelok.additionCar.AdditionCar;
 import com.github.brelok.car.Car;
 import com.github.brelok.BaseEntity;
-import com.github.brelok.converter.LocalDateTimeAttributeConverter;
+import com.github.brelok.converter.LocalDateAttributeConverter;
 import com.github.brelok.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,14 +30,14 @@ public class Order extends BaseEntity {
 
     private Double totalPrice;
 
-    //    @CreatedDate
-//    @Convert(converter = LocalDateTimeAttributeConverter.class)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @CreatedDate
+    @Convert(converter = LocalDateAttributeConverter.class)
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startRent;
 
-    //    @CreatedDate
-//    @Convert(converter = LocalDateTimeAttributeConverter.class)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @CreatedDate
+    @Convert(converter = LocalDateAttributeConverter.class)
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endRent;
 
     @ManyToOne
