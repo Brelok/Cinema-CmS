@@ -67,6 +67,7 @@ public class AdditionCarService {
         additionCar.setName(additionCarDtoSaveForm.getName());
         additionCar.setDescription(additionCarDtoSaveForm.getDescription());
         additionCar.setQuantity(additionCarDtoSaveForm.getQuantity());
+        additionCar.setPricePerDay(additionCarDtoSaveForm.getPricePerDay());
 
         return additionCar;
     }

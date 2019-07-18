@@ -17,12 +17,16 @@ public class AdditionCarDtoDisplay {
     private String name;
     private String description;
     private Integer quantity;
+    private double pricePerDay;
 
     public AdditionCarDtoDisplay(AdditionCar that){
         this.id = that.getId();
         this.name = that.getName();
         this.description = that.getDescription();
         this.quantity = that.getQuantity();
+        this.pricePerDay = that.getPricePerDay();
 
     }
+
+
 }

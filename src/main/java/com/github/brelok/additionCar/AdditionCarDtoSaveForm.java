@@ -14,11 +14,13 @@ public class AdditionCarDtoSaveForm {
     private String name;
     private String description;
     private Integer quantity;
+    private Double pricePerDay;
 
     public AdditionCarDtoSaveForm(AdditionCar that){
         this.id = that.getId();
         this.name = that.getName();
         this.description = that.getDescription();
         this.quantity = that.getQuantity();
+        this.pricePerDay = that.getPricePerDay();
     }
 }

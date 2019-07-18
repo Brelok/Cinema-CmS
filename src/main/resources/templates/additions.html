@@ -28,6 +28,7 @@
                             <th>Addition</th>
                             <th>Description</th>
                             <th>Available Quantity</th>
+                            <th>Price per day</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -36,6 +37,7 @@
                             <th>Addition</th>
                             <th>Description</th>
                             <th>Available Quantity</th>
+                            <th>Price per day</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>
@@ -50,6 +52,7 @@
                             <td th:text="${add.name}">Brand</td>
                             <td th:text="${add.description}">Model</td>
                             <td th:text="${add.quantity}">Class</td>
+                            <td th:text="${add.pricePerDay}">Class</td>
                             <td><a th:href="@{addition/delete(id=${add.id})}" th:text="#{delete}">Delete add</a>
                                 <a th:href="@{addition/edit(id=${add.id})}" th:text="#{edit}">Edit add</a>
                             </td>
