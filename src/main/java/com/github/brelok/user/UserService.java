@@ -27,11 +27,11 @@ public class UserService {
     }
 
     public UserDtoDisplay findOneUserDto(Long id){
-        return new UserDtoDisplay(userRepository.findOne(id));
+        return new UserDtoDisplay(userRepository.getOne(id));
     }
 
     public User findOne(Long id){
-        return userRepository.findOne(id);
+        return userRepository.getOne(id);
     }
 
     public void createUser(UserDtoSave userDtoSave){
@@ -55,7 +55,7 @@ public class UserService {
     }
 
     public void edit(UserDtoSave userDtoSave) {
-        User existing = userRepository.findOne(userDtoSave.getId());
+        User existing = userRepository.getOne(userDtoSave.getId());
 
         userRepository.save(setValuesUserFromDtoValues(existing,userDtoSave));
     }

@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -28,12 +29,15 @@ public class Order extends BaseEntity {
     private Long id;
 
     private Double totalPrice;
-    @CreatedDate
-    @Convert(converter = LocalDateTimeAttributeConverter.class)
+
+    //    @CreatedDate
+//    @Convert(converter = LocalDateTimeAttributeConverter.class)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startRent;
 
-    @CreatedDate
-    @Convert(converter = LocalDateTimeAttributeConverter.class)
+    //    @CreatedDate
+//    @Convert(converter = LocalDateTimeAttributeConverter.class)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endRent;
 
     @ManyToOne

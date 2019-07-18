@@ -39,7 +39,7 @@ public class AdditionCarController {
 
     @GetMapping("/delete")
     public String delete(@RequestParam Long id){
-        additionsCarService.delete(id);
+        additionsCarService.delete(additionsCarService.findOne(id));
         return "redirect:/addition";
     }
 

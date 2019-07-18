@@ -4,6 +4,7 @@ import com.github.brelok.additionCar.AdditionCar;
 import com.github.brelok.additionCar.AdditionCarRepository;
 import com.github.brelok.car.CarRepository;
 import com.github.brelok.user.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@Slf4j
 public class OrderService {
 
     private OrderRepository orderRepository;
@@ -45,21 +47,22 @@ public class OrderService {
     }
 
     public Order findOne(Long id){
-        return orderRepository.findOne(id);
+        return orderRepository.getOne(id);
     }
 
     public OrderDtoSave findOneDtoSave(Long id){
-        return new OrderDtoSave(orderRepository.findOne(id));
+        return new OrderDtoSave(orderRepository.getOne(id));
     }
 
     public Order setValuesOrderFromOrderDtoSave(Order order, OrderDtoSave orderDtoSave){
         order.setId(orderDtoSave.getId());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         order.setStartRent(LocalDate.parse(orderDtoSave.getStartRent(), formatter));
+        log.error("date " + orderDtoSave.getStartRent());
 //        order.setStartRent(LocalDateTime.parse(orderDtoSave.getStartRent(), formatter));
         order.setEndRent(LocalDate.parse(orderDtoSave.getEndRent(),formatter));
-        order.setCar(carRepository.findOne(orderDtoSave.getCarId()));
-        order.setUser(userRepository.findOne(orderDtoSave.getUserId()));
+        order.setCar(carRepository.getOne(orderDtoSave.getCarId()));
+        order.setUser(userRepository.getOne(orderDtoSave.getUserId()));
         order.getAdditionsCars().addAll(changeAdditionsIdtoAdditions(orderDtoSave.getAdditionsId()));
 
        return order;
@@ -69,7 +72,7 @@ public class OrderService {
         List<AdditionCar> list = new ArrayList<>();
 
         for (Long along : additionsIdArray){
-            list.add(additionCarRepository.findOne(along));
+            list.add(additionCarRepository.getOne(along));
         }
         return new HashSet<>(list);
     }
@@ -84,7 +87,7 @@ public class OrderService {
     }
 
     public void editOrder (OrderDtoSave orderDtoSave){
-        Order existing = orderRepository.findOne(orderDtoSave.getId());
+        Order existing = orderRepository.getOne(orderDtoSave.getId());
         orderRepository.save(setValuesOrderFromOrderDtoSave(existing,orderDtoSave));
     }
 }

@@ -42,18 +42,22 @@ public class AdditionCarService {
         List<Car> list = new ArrayList<>();
 
         for (Long along : additions) {
-            list.add(carRepository.findOne(along));
+            list.add(carRepository.getOne(along));
         }
 
         return new HashSet<>(list);
     }
 
-    public void delete(Long id) {
-        additionCarRepository.delete(id);
+    public void delete(AdditionCar additionCar) {
+        additionCarRepository.delete(additionCar);
+    }
+
+    public AdditionCar findOne(Long id){
+        return additionCarRepository.getOne(id);
     }
 
     public void editAddition(AdditionCarDtoSaveForm additionCarDtoSaveForm){
-        AdditionCar existing = additionCarRepository.findOne(additionCarDtoSaveForm.getId());
+        AdditionCar existing = additionCarRepository.getOne(additionCarDtoSaveForm.getId());
 
         additionCarRepository.save(setValueAdditionCarFromAdditionCarDTOSaveForm(existing, additionCarDtoSaveForm));
     }
@@ -68,7 +72,7 @@ public class AdditionCarService {
     }
 
     public AdditionCarDtoSaveForm findOneDtoSaveForm (Long id){
-        return new AdditionCarDtoSaveForm(additionCarRepository.findOne(id));
+        return new AdditionCarDtoSaveForm(additionCarRepository.getOne(id));
     }
 
 }

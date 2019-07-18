@@ -1,0 +1,112 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<title>Car Rent Brelok</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Roadster Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="/mainpage/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link href="/mainpage/css/style.css" rel='stylesheet' type='text/css' />
+<script src="/mainpage/js/jquery.min.js"> </script>
+<!--webfonts-->
+ <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+ <link href='//fonts.googleapis.com/css?family=Raleway:400,500' rel='stylesheet' type='text/css'>
+<!--//webfonts-->
+<script type="text/javascript" src="/mainpage/js/move-top.js"></script>
+<script type="text/javascript" src="/mainpage/js/easing.js"></script>
+<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+				});
+			});
+</script>
+
+</head>
+<body>
+	<!--start-home-->
+<div id="home" class="header">
+		<div class="container">
+	     <div class="header-top">
+	        <div class="logo">
+					<a th:href="@{/}"><h1>Car rent <span>Brelok</span></h1></a>
+				</div>
+					<div class="clearfix"> </div>
+					<span class="menu"></span>
+							<script>
+							$( "span.menu" ).click(function() {
+							  $( ".top-menu" ).slideToggle( "slow", function() {
+								// Animation complete.
+							  });
+							});
+						</script>
+				<!-- start-search-->
+			<div class="clearfix"> </div>
+        </div>
+			 	<div class="banner">
+						<div class="callbacks_container">
+						<ul class="rslides callbacks callbacks1" id="slider4">
+							<li class="" style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out;">
+								<div class="banner-info">
+								   <h1>404</h1>
+<!--								   <p>Find used cars on <span>recent cars</span> page</p>-->
+								</div>
+							</li>
+
+<!--							<li class="" style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out;">-->
+<!--								<div class="banner-info">-->
+<!--								   <h3>Find Your Dream Car</h3>-->
+<!--								    <p>Find used cars on <span>recent cars</span> page</p>-->
+<!--								</div>-->
+<!--							</li>-->
+<!--							<li class="" style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out;">-->
+<!--								<div class="banner-info">-->
+<!--								  <h3>We Give Best Service</h3>-->
+<!--								  <p>Find used cars on <span>recent cars</span> page</p>-->
+<!--								</div>	-->
+<!--							</li>-->
+<!--							<li class="" style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out;">-->
+<!--								<div class="banner-info">-->
+<!--								  <h3>Lorem Ipsum is simply</h3>-->
+<!--								  <p>Find used cars on <span>recent cars</span> page</p>-->
+<!--								</div>	-->
+<!--							</li>-->
+						</ul>
+						</div>
+						<!--banner-Slider-->
+						<script src="/mainpage/js/responsiveslides.min.js"></script>
+						 <script>
+						// You can also use "$(window).load(function() {"
+						$(function () {
+						  // Slideshow 4
+						  $("#slider4").responsiveSlides({
+						auto: true,
+						pager: true,
+						nav:false,
+						speed: 500,
+						namespace: "callbacks",
+						before: function () {
+						  $('.events').append("<li>before event fired.</li>");
+						},
+						after: function () {
+						  $('.events').append("<li>after event fired.</li>");
+						}
+						  });
+
+						});
+						  </script>
+
+			</div>
+		</div>
+	</div>

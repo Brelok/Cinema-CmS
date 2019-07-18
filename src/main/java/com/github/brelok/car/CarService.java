@@ -39,11 +39,11 @@ public class CarService {
     }
 
     public Car findOne(Long id) {
-        return carRepository.findOne(id);
+        return carRepository.getOne(id);
     }
 
     public CarDtoSave findOneDto(Long id) {
-        return new CarDtoSave(carRepository.findOne(id));
+        return new CarDtoSave(carRepository.getOne(id));
     }
 
     public Long countAvailableCar() {
@@ -95,7 +95,7 @@ public class CarService {
     }
 
     public void editCar(CarDtoSave carDtoSave) {
-        Car existing = carRepository.findOne(carDtoSave.getId());
+        Car existing = carRepository.getOne(carDtoSave.getId());
 
         carRepository.save(setValuesCarFromDtoValues(existing, carDtoSave));
     }
@@ -107,8 +107,8 @@ public class CarService {
         car.setRating(carDtoSave.getRating());
         car.setStatus(carDtoSave.isStatus());
         car.setYearOfProduction(carDtoSave.getYearOfProduction());
-        car.setBrandCar(brandCarRepository.findOne(carDtoSave.getBrandId()));
-        car.setClassCar(classCarRepository.findOne(carDtoSave.getClassCarId()));
+        car.setBrandCar(brandCarRepository.getOne(carDtoSave.getBrandId()));
+        car.setClassCar(classCarRepository.getOne(carDtoSave.getClassCarId()));
         return car;
     }
 
