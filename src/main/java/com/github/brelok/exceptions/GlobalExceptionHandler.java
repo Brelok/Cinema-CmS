@@ -14,11 +14,11 @@ public class GlobalExceptionHandler {
 
     private static Logger LOG = LoggerFactory.getLogger(RuntimeException.class);
 
-//    @ExceptionHandler(RuntimeException.class)
-//    @ResponseBody
-//    public String handleRuntimeException(RuntimeException e) {
-//        LOG.error("RUNTIME EXCEPTION: " + e.getMessage());
-//        return new StringBuilder().append(e.getMessage()).toString();
+////    @ExceptionHandler(RuntimeException.class)
+////    @ResponseBody
+////    public String handleRuntimeException(RuntimeException e) {
+////        LOG.error("RUNTIME EXCEPTION: " + e.getMessage());
+////        return new StringBuilder().append(e.getMessage()).toString();
 //    }
 
 //    @ExceptionHandler(ResourceNotFoundException.class)
@@ -35,7 +35,6 @@ public class GlobalExceptionHandler {
 //        return "404";
 //    }
 
-
-
-
 }
+
+

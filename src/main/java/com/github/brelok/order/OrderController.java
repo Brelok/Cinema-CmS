@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -71,20 +72,38 @@ public class OrderController {
     }
 
     @GetMapping("/edit")
-    public String edit(Model model, @RequestParam Long id){
+    public String edit(Model model, @RequestParam Long id) {
         model.addAttribute("order", orderService.findOneDtoSave(id));
         return "order_edit";
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute("orderDto") @Valid OrderDtoSave orderDtoSave){
+    public String edit(@ModelAttribute("orderDto") @Valid OrderDtoSave orderDtoSave) {
         orderService.editOrder(orderDtoSave);
         return "redirect:/order";
     }
 
     @GetMapping("/delete")
-    public String delete (@RequestParam Long id){
+    public String delete(@RequestParam Long id) {
         orderService.deleteOrder(orderService.findOne(id));
+        return "redirect:/order";
+    }
+
+    @GetMapping("/edit_additions")
+    public String editAdditions(Model model, @RequestParam Long id) {
+        model.addAttribute("order", orderService.findOneDtoSave(id));
+        return "order_edit_add";
+    }
+
+    @PostMapping("/edit/additions")
+    public String editAdditions(@ModelAttribute("orderDto") @Valid OrderDtoSave orderDtoSave,
+                                @RequestParam Long[] ids,
+                                @RequestParam Long[] quantity) {
+        log.info("ids {}", Arrays.toString(ids));
+        log.info("totalQuantity {}", Arrays.toString(quantity));
+        log.info("id moje {} ", orderDtoSave.getId());
+
+//        orderService.editOrder(orderDtoSave);
         return "redirect:/order";
     }
 

@@ -37,7 +37,7 @@ public class OrderService {
         this.additionCarRepository = additionCarRepository;
     }
 
-    public List findAllDtoDisplay(){
+    public List findAllDtoDisplay() {
         List<Order> list = orderRepository.findAll();
 
         return list.stream()
@@ -45,59 +45,77 @@ public class OrderService {
                 .collect(Collectors.toList());
     }
 
-    public List findAll (){
+    public List findAll() {
         return orderRepository.findAll();
     }
 
-    public Order findOne(Long id){
+    public Order findOne(Long id) {
         return orderRepository.getOne(id);
     }
 
-    public OrderDtoSave findOneDtoSave(Long id){
+    public OrderDtoSave findOneDtoSave(Long id) {
         return new OrderDtoSave(orderRepository.getOne(id));
     }
 
-    public Order setValuesOrderFromOrderDtoSave(Order order, OrderDtoSave orderDtoSave){
+    public Order setValuesOrderFromOrderDtoSave(Order order, OrderDtoSave orderDtoSave) {
         order.setId(orderDtoSave.getId());
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         order.setStartRent(LocalDate.parse(orderDtoSave.getStartRent(), formatter));
-        order.setEndRent(LocalDate.parse(orderDtoSave.getEndRent(),formatter));
+        order.setEndRent(LocalDate.parse(orderDtoSave.getEndRent(), formatter));
 
         order.setCar(carRepository.getOne(orderDtoSave.getCarId()));
         order.setUser(userRepository.getOne(orderDtoSave.getUserId()));
-log.info("orderDtoSave.getAdditionsId() {}",orderDtoSave.getAdditionsId());
-log.info("changeAdditionsIdtoAdditions(orderDtoSave.getAdditionsId()) {}",changeAdditionsIdtoAdditions(orderDtoSave.getAdditionsId()));
         order.setAdditionsCars(changeAdditionsIdtoAdditions(orderDtoSave.getAdditionsId()));
-log.info("order.getAdditionCar() {}", order.getAdditionsCars());
+
         long daysBetween = DAYS.between(order.getStartRent(), order.getEndRent());
         double pricePerDay = order.getCar().getPricePerDay();
 
         order.setTotalPrice(pricePerDay * daysBetween);
 
-       return order;
+        return order;
     }
 
-    public Set<AdditionCar> changeAdditionsIdtoAdditions(Long[] additionsIdArray){
+    public Set<AdditionCar> changeAdditionsIdtoAdditions(Long[] additionsIdArray) {
         List<AdditionCar> list = new ArrayList<>();
 
-        for (Long along : additionsIdArray){
+        for (Long along : additionsIdArray) {
             list.add(additionCarRepository.getOne(along));
         }
         return new HashSet<>(list);
     }
 
-    public void createOrder (OrderDtoSave orderDtoSave){
+    public void createOrder(OrderDtoSave orderDtoSave) {
         Order order = new Order();
-        orderRepository.save(setValuesOrderFromOrderDtoSave(order,orderDtoSave));
+        orderRepository.save(setValuesOrderFromOrderDtoSave(order, orderDtoSave));
     }
 
-    public void deleteOrder (Order order){
+    public void deleteOrder(Order order) {
         orderRepository.delete(order);
     }
 
-    public void editOrder (OrderDtoSave orderDtoSave){
+    public void editOrder(OrderDtoSave orderDtoSave) {
         Order existing = orderRepository.getOne(orderDtoSave.getId());
-        orderRepository.save(setValuesOrderFromOrderDtoSave(existing,orderDtoSave));
+        orderRepository.save(setValuesOrderFromOrderDtoSave(existing, orderDtoSave));
+    }
+
+    public void addAdditionsToOrder(Long id, Long[] quantity, Long[] additionsId) {
+        List<Long> quantityWithoutNull = Arrays.stream(quantity)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+
+        Order existing = orderRepository.findOne(id);
+
+        List<AdditionCar> additionCarList = new ArrayList<>();
+
+        for (Long along : additionsId) {
+            additionCarList.add(additionCarRepository.findOne(along));
+        }
+
+        for(Long along : quantityWithoutNull){
+
+        }
+
+
     }
 }

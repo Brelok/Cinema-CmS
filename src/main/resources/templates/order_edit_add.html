@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:form="http://www.w3.org/1999/html"
+      layout:decorator="template">
+<body>
+<section layout:fragment="content">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800" th:field="#{addAdditions}">Add additions</h1>
+        <p class="mb-4" th:text="#{addAdditionsToOrder(${order.id})}"></p>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary"></h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <form class="table table-bordered" id="dataForm" width="100%" cellspacing="0"
+                          action="/order/edit/additions" method="post" th:object="${order}">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" align="middle">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Available Quantity</th>
+                                <th>Your Quantity</th>
+                                <th>Price per Day</th>
+                                <th>Add</th>
+                            </tr>
+                            </thead>
+                            <tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Available Quantity</th>
+                                <th>Your Quantity</th>
+                                <th>Price per Day</th>
+                                <th>Add</th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
+                            <input type="hidden" th:value="${order.id}" name="id"> <!-- przekazujemy order id -->
+                            <tr th:each="add : ${additions}">
+                                <td th:text="${add.name}">Name</td>
+                                <td th:text="${add.description}">Description</td>
+                                <td th:text="${add.quantity}">Quantity</td>
+                                <td>
+                                    <input type="text" value="" name="quantity">
+                                </td>
+                                <td th:text="${add.pricePerDay}">Price per Day</td>
+                                <td>
+                                    <input type="checkbox" th:value="${add.id}" name="ids">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <input type="submit" value="Submit"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+</section>
+</body>
+</html>

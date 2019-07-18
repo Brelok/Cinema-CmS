@@ -1,12 +1,8 @@
 package com.github.brelok.additionCar;
 
-import com.github.brelok.car.Car;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -23,7 +19,7 @@ public class AdditionCarDtoDisplay {
         this.id = that.getId();
         this.name = that.getName();
         this.description = that.getDescription();
-        this.quantity = that.getQuantity();
+        this.quantity = that.getTotalQuantity();
         this.pricePerDay = that.getPricePerDay();
 
     }

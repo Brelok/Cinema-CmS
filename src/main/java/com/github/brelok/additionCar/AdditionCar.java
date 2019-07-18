@@ -1,7 +1,6 @@
 package com.github.brelok.additionCar;
 
 import com.github.brelok.BaseEntity;
-import com.github.brelok.car.Car;
 import com.github.brelok.order.Order;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,16 +25,14 @@ public class AdditionCar extends BaseEntity {
     @Column(length = 1500)
     private String description;
 
-    private Integer quantity;
+    private Integer totalQuantity;
     private double pricePerDay;
-
-
 
     @ManyToMany(mappedBy = "additionsCars")
     private Set<Order> orders = new HashSet<>();
 
     @Override
     public String toString() {
-        return name;
+        return totalQuantity + " " + name;
     }
 }
