@@ -4,12 +4,14 @@ import com.github.brelok.additionCar.AdditionCar;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@Slf4j
 public class OrderDtoSave {
 
     private Long id;

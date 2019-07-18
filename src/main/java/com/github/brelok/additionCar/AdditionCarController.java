@@ -4,6 +4,7 @@ import com.github.brelok.car.CarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -38,8 +39,9 @@ public class AdditionCarController {
     }
 
     @GetMapping("/delete")
-    public String delete(@RequestParam Long id){
+    public String delete(@RequestParam Long id, RedirectAttributes redirectAttributes){
         additionsCarService.delete(additionsCarService.findOne(id));
+//        redirectAttributes.addFlashAttribute("message", "Succesed deleted");
         return "redirect:/addition";
     }
 

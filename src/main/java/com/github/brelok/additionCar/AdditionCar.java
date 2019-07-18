@@ -33,12 +33,6 @@ public class AdditionCar extends BaseEntity {
 
     @Override
     public String toString() {
-        return "AdditionCar{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", quantity=" + quantity +
-                ", orders=" + orders +
-                '}';
+        return name;
     }
 }

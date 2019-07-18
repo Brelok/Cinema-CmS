@@ -47,17 +47,7 @@ public class Car extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Car{" +
-                "id=" + id +
-                ", model='" + model + '\'' +
-                ", yersOfProduction=" + yearOfProduction +
-                ", pricePerDay=" + pricePerDay +
-                ", rating=" + rating +
-                ", status=" + status +
-                ", classCar=" + classCar +
-                ", equipmentsCars=" + equipmentsCars +
-                ", brandCar=" + brandCar +
-                '}';
+        return model;
     }
 
 }

@@ -75,4 +75,8 @@ public class AdditionCarService {
         return new AdditionCarDtoSaveForm(additionCarRepository.getOne(id));
     }
 
+    public List findAllAdditionsCarInThisOrOrderBy(Long id){
+        return additionCarRepository.findAllAdditionsCarInThisOrOrderBy(id);
+    }
+
 }

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:C="http://www.w3.org/1999/html"
       layout:decorator="template">
 <body>
 <section layout:fragment="content">
@@ -40,6 +40,12 @@
                         </tr>
                         </tfoot>
                         <tbody>
+<!--                        <div id="page-wrapper" class="p-4">-->
+<!--&lt;!&ndash;                            <c:if test="${not empty message}">&ndash;&gt;-->
+<!--                            <span th:if="${message} ?" >-->
+<!--                                <div class="alert alert-success">-->
+<!--                                    ${message}-->
+<!--                        </div>-->
                         <tr th:each="add : ${addition}">
                             <td th:text="${add.name}">Brand</td>
                             <td th:text="${add.description}">Model</td>

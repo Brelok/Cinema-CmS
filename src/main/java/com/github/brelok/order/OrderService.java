@@ -15,6 +15,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.time.temporal.ChronoUnit;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 @Service
 @Transactional
@@ -56,14 +59,21 @@ public class OrderService {
 
     public Order setValuesOrderFromOrderDtoSave(Order order, OrderDtoSave orderDtoSave){
         order.setId(orderDtoSave.getId());
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         order.setStartRent(LocalDate.parse(orderDtoSave.getStartRent(), formatter));
-        log.error("date " + orderDtoSave.getStartRent());
-//        order.setStartRent(LocalDateTime.parse(orderDtoSave.getStartRent(), formatter));
         order.setEndRent(LocalDate.parse(orderDtoSave.getEndRent(),formatter));
+
         order.setCar(carRepository.getOne(orderDtoSave.getCarId()));
         order.setUser(userRepository.getOne(orderDtoSave.getUserId()));
-        order.getAdditionsCars().addAll(changeAdditionsIdtoAdditions(orderDtoSave.getAdditionsId()));
+log.info("orderDtoSave.getAdditionsId() {}",orderDtoSave.getAdditionsId());
+log.info("changeAdditionsIdtoAdditions(orderDtoSave.getAdditionsId()) {}",changeAdditionsIdtoAdditions(orderDtoSave.getAdditionsId()));
+        order.setAdditionsCars(changeAdditionsIdtoAdditions(orderDtoSave.getAdditionsId()));
+log.info("order.getAdditionCar() {}", order.getAdditionsCars());
+        long daysBetween = DAYS.between(order.getStartRent(), order.getEndRent());
+        double pricePerDay = order.getCar().getPricePerDay();
+
+        order.setTotalPrice(pricePerDay * daysBetween);
 
        return order;
     }

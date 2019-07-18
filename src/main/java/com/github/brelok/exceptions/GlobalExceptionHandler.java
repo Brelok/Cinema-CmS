@@ -14,12 +14,12 @@ public class GlobalExceptionHandler {
 
     private static Logger LOG = LoggerFactory.getLogger(RuntimeException.class);
 
-    @ExceptionHandler(RuntimeException.class)
-    @ResponseBody
-    public String handleRuntimeException(RuntimeException e) {
-        LOG.error("RUNTIME EXCEPTION: " + e.getMessage());
-        return new StringBuilder().append(e.getMessage()).toString();
-    }
+//    @ExceptionHandler(RuntimeException.class)
+//    @ResponseBody
+//    public String handleRuntimeException(RuntimeException e) {
+//        LOG.error("RUNTIME EXCEPTION: " + e.getMessage());
+//        return new StringBuilder().append(e.getMessage()).toString();
+//    }
 
 //    @ExceptionHandler(ResourceNotFoundException.class)
 //    @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -28,12 +28,12 @@ public class GlobalExceptionHandler {
 //        return "404";
 //    }
 
-     @ExceptionHandler(NoHandlerFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String handleResourceBotFoundException(NoHandlerFoundException e){
-        LOG.error("RESOURCE NOT FOUND: " + e.getMessage());
-        return "404";
-    }
+//     @ExceptionHandler(NoHandlerFoundException.class)
+//    @ResponseStatus(HttpStatus.NOT_FOUND)
+//    public String handleResourceBotFoundException(NoHandlerFoundException e){
+//        LOG.error("RESOURCE NOT FOUND: " + e.getMessage());
+//        return "404";
+//    }
 
 
 

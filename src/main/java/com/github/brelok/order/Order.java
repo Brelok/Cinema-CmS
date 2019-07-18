@@ -52,16 +52,5 @@ public class Order extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "additionalCar_id"))
     private Set<AdditionCar> additionsCars = new HashSet<>();
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", totalPrice=" + totalPrice +
-                ", startRent=" + startRent +
-                ", endRent=" + endRent +
-                ", car=" + car +
-                ", user=" + user +
-                ", additionsCars=" + additionsCars +
-                '}';
-    }
+
 }

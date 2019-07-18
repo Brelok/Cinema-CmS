@@ -11,10 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -38,6 +34,7 @@ public class OrderController {
     @GetMapping
     public String showAll(Model model) {
         model.addAttribute("orders", orderService.findAllDtoDisplay());
+//        model.addAttribute("addInOrder", additionCarService.findAllAdditionsCarInThisOrOrderBy());
         return "orders";
     }
 
@@ -55,7 +52,6 @@ public class OrderController {
     public List getAllAdditionsDto() {
         return additionCarService.findAll();
     }
-
 
     @GetMapping("/add")
     public String add(Model model) {
@@ -81,7 +77,7 @@ public class OrderController {
     }
 
     @PostMapping("/edit")
-    public String edit(@ModelAttribute(name = "orderDto") @Valid OrderDtoSave orderDtoSave){
+    public String edit(@ModelAttribute("orderDto") @Valid OrderDtoSave orderDtoSave){
         orderService.editOrder(orderDtoSave);
         return "redirect:/order";
     }
