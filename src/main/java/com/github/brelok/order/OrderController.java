@@ -35,7 +35,6 @@ public class OrderController {
     @GetMapping
     public String showAll(Model model) {
         model.addAttribute("orders", orderService.findAllDtoDisplay());
-//        model.addAttribute("addInOrder", additionCarService.findAllAdditionsCarInThisOrOrderBy());
         return "orders";
     }
 
@@ -57,10 +56,6 @@ public class OrderController {
     @GetMapping("/add")
     public String add(Model model) {
         model.addAttribute("order", new OrderDtoSave());
-//        model.addAttribute("standardDate", new Date());
-//        model.addAttribute("localDateTime", LocalDateTime.now());
-//        model.addAttribute("localDate", LocalDate.now());
-//        model.addAttribute("timestamp", Instant.now());
         return "order_add";
     }
 

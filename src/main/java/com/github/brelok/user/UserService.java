@@ -1,5 +1,7 @@
 package com.github.brelok.user;
 
+import com.github.brelok.security.RoleRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,10 +12,17 @@ import java.util.stream.Collectors;
 @Transactional
 public class UserService {
 
-    private UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
+    private final RoleRepository roleRepository;
+    private UserRepository userRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public UserService(RoleRepository roleRepository,
+                       UserRepository userRepository,
+                       BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.roleRepository = roleRepository;
         this.userRepository = userRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     public List findAllDtoDisplay(){
@@ -45,7 +54,10 @@ public class UserService {
         user.setLastName(userDtoSave.getLastName());
         user.setEmail(userDtoSave.getEmail());
         user.setLogin(userDtoSave.getLogin());
-        user.setPassword(userDtoSave.getPassword());
+        user.setPassword(bCryptPasswordEncoder.encode(userDtoSave.getPassword()));
+        user.setEnabled(1);
+
+
 
         return user;
     }
@@ -58,5 +70,14 @@ public class UserService {
         User existing = userRepository.getOne(userDtoSave.getId());
 
         userRepository.save(setValuesUserFromDtoValues(existing,userDtoSave));
+    }
+
+    public boolean checkUserIsAdmin (User user){
+
+        User userRepositoryByLogin = userRepository.findByLogin(user.getLogin());
+        if(userRepositoryByLogin.getPassword().equals(user.getPassword())){
+            return true;
+        }
+        return false;
     }
 }

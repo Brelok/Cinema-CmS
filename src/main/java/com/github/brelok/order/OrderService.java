@@ -3,19 +3,18 @@ package com.github.brelok.order;
 import com.github.brelok.additionCar.AdditionCar;
 import com.github.brelok.additionCar.AdditionCarRepository;
 import com.github.brelok.car.CarRepository;
+import com.github.brelok.orderAdditionCar.OrderAdditionCar;
+import com.github.brelok.orderAdditionCar.OrderAdditionCarRepository;
 import com.github.brelok.user.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.DateFormatter;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.time.temporal.ChronoUnit;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
@@ -28,13 +27,15 @@ public class OrderService {
     private CarRepository carRepository;
     private UserRepository userRepository;
     private AdditionCarRepository additionCarRepository;
+    private OrderAdditionCarRepository orderAdditionCarRepository;
 
     @Autowired
-    public OrderService(OrderRepository orderRepository, CarRepository carRepository, UserRepository userRepository, AdditionCarRepository additionCarRepository) {
+    public OrderService(OrderRepository orderRepository, CarRepository carRepository, UserRepository userRepository, AdditionCarRepository additionCarRepository, OrderAdditionCarRepository orderAdditionCarRepository) {
         this.orderRepository = orderRepository;
         this.carRepository = carRepository;
         this.userRepository = userRepository;
         this.additionCarRepository = additionCarRepository;
+        this.orderAdditionCarRepository = orderAdditionCarRepository;
     }
 
     public List findAllDtoDisplay() {
@@ -66,7 +67,6 @@ public class OrderService {
 
         order.setCar(carRepository.getOne(orderDtoSave.getCarId()));
         order.setUser(userRepository.getOne(orderDtoSave.getUserId()));
-        order.setAdditionsCars(changeAdditionsIdtoAdditions(orderDtoSave.getAdditionsId()));
 
         long daysBetween = DAYS.between(order.getStartRent(), order.getEndRent());
         double pricePerDay = order.getCar().getPricePerDay();
@@ -76,14 +76,6 @@ public class OrderService {
         return order;
     }
 
-    public Set<AdditionCar> changeAdditionsIdtoAdditions(Long[] additionsIdArray) {
-        List<AdditionCar> list = new ArrayList<>();
-
-        for (Long along : additionsIdArray) {
-            list.add(additionCarRepository.getOne(along));
-        }
-        return new HashSet<>(list);
-    }
 
     public void createOrder(OrderDtoSave orderDtoSave) {
         Order order = new Order();
@@ -99,23 +91,5 @@ public class OrderService {
         orderRepository.save(setValuesOrderFromOrderDtoSave(existing, orderDtoSave));
     }
 
-    public void addAdditionsToOrder(Long id, Long[] quantity, Long[] additionsId) {
-        List<Long> quantityWithoutNull = Arrays.stream(quantity)
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList());
 
-        Order existing = orderRepository.findOne(id);
-
-        List<AdditionCar> additionCarList = new ArrayList<>();
-
-        for (Long along : additionsId) {
-            additionCarList.add(additionCarRepository.findOne(along));
-        }
-
-        for(Long along : quantityWithoutNull){
-
-        }
-
-
-    }
 }

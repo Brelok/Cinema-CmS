@@ -32,13 +32,13 @@
                             <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.lastName}"></option>
                         </select>
                         </p>
-                        <p>Additions:</p>
-                        <ul>
-                            <li th:each="add: ${additions}">
-                                <input type="checkbox" th:field="${order.additionsId}" th:value="${add.id}"
-                                       th:text="${add.name}">
-                            </li>
-                        </ul>
+<!--                        <p>Additions:</p>-->
+<!--                        <ul>-->
+<!--                            <li th:each="add: ${additions}">-->
+<!--                                <input type="checkbox" th:field="${order.additionsId}" th:value="${add.id}"-->
+<!--                                       th:text="${add.name}">-->
+<!--                            </li>-->
+<!--                        </ul>-->
                         <input type="submit" value="Submit"/>
                     </form>
                 </div>

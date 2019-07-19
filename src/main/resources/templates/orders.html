@@ -28,7 +28,8 @@
                             <th>End rent</th>
                             <th>Car</th>
                             <th>User</th>
-                            <th>List additions</th>
+<!--                            <th>List additions</th>-->
+<!--                            <th>Quantity additions</th>-->
                             <th>Total price</th>
                             <th>Action</th>
                         </tr>
@@ -40,7 +41,8 @@
                             <th>End rent</th>
                             <th>Car</th>
                             <th>User</th>
-                            <th>List additions</th>
+<!--                            <th>List additions</th>-->
+<!--                            <th>Quantity additions</th>-->
                             <th>Total price</th>
                             <th>Action</th>
                         </tr>
@@ -55,11 +57,16 @@
 
                             <td th:text="${order.userName}">User</td>
 
-                            <td>
-                                <ul th:each="add: ${order.additionsList}">
-                                    <li th:text="${add}">></li>
-                                </ul>
-                            </td>
+<!--                            <td>-->
+<!--                                <ul th:each="add: ${order.orderAdditionCarsName}">-->
+<!--                                    <li th:text="${add}">></li>-->
+<!--                                </ul>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <ul th:each="add: ${order.orderAdditionCarsQuantity}">-->
+<!--                                    <li th:text="${add}">></li>-->
+<!--                                </ul>-->
+<!--                            </td>-->
                             <td th:text="${order.totalPrice}">Total price</td>
                             <td><a th:href="@{order/delete(id=${order.id})}" th:text="#{delete}">Delete order</a>
                                 <a th:href="@{order/edit(id=${order.id})}" th:text="#{edit}">Edit order</a>
