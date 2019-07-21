@@ -1,10 +1,10 @@
 # CarRent CMS
-workshop about CarRent CMS - Spring Boot, Hibernate, Java, MySQL
+workshop about CarRent CMS - Spring Boot, Hibernate, Java, MySQL, Thymeleaf
 
 Assumptions:\
-Main:\
-**Car, ClassCar, EquipmentsCar, Order, AdditionsCar** - complete CRUD\
-**Relations** - One to Many unidirectional, Many to Many bidirectional\
+**Admin site:** complete managment about cars, orders;
+**User site:** online search (in work)
+**Spring security:** in work
 
-Minor:\
-In future: adress, employee, department
+In future:\
+adress, employee, other departments

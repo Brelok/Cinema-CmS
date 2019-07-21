@@ -29,9 +29,6 @@ public class AdditionCar extends BaseEntity {
     private Integer totalQuantity;
     private double pricePerDay;
 
-//    @ManyToMany(mappedBy = "additionsCars")
-//    private Set<Order> orders = new HashSet<>();
-
     @OneToMany(mappedBy = "additionCar")
     private Set<OrderAdditionCar> orderAdditionCars;
 

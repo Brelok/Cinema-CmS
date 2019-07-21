@@ -20,7 +20,7 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <form class="table table-bordered" id="dataForm" width="100%" cellspacing="0"
-                          action="/order/edit/additions" method="post" th:object="${order}">
+                          action="/order/additions/update" method="post" th:object="${order}">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" align="middle">
                             <thead>
                             <tr>
@@ -53,7 +53,7 @@
                                 </td>
                                 <td th:text="${add.pricePerDay}">Price per Day</td>
                                 <td>
-                                    <input type="checkbox" th:value="${add.id}" name="ids">
+                                    <input type="checkbox" th:value="${add.id}" name="additionsId">
                                 </td>
                             </tr>
                             </tbody>

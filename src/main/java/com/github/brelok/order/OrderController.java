@@ -1,8 +1,8 @@
 package com.github.brelok.order;
 
-import ch.qos.logback.classic.util.LoggerNameUtil;
 import com.github.brelok.additionCar.AdditionCarService;
 import com.github.brelok.car.CarService;
+import com.github.brelok.orderAdditionCar.OrderAdditionCarService;
 import com.github.brelok.user.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +23,22 @@ public class OrderController {
     private CarService carService;
     private AdditionCarService additionCarService;
     private UserService userService;
+    private OrderAdditionCarService orderAdditionCarService;
 
     @Autowired
-    public OrderController(OrderService orderService, CarService carService, AdditionCarService additionCarService, UserService userService) {
+    public OrderController(OrderService orderService, CarService carService, AdditionCarService additionCarService, UserService userService, OrderAdditionCarService orderAdditionCarService) {
         this.orderService = orderService;
         this.carService = carService;
         this.additionCarService = additionCarService;
         this.userService = userService;
+        this.orderAdditionCarService = orderAdditionCarService;
     }
 
     @GetMapping
     public String showAll(Model model) {
         model.addAttribute("orders", orderService.findAllDtoDisplay());
+        model.addAttribute("orderAddition", orderAdditionCarService.findAllOrderAdditionCarDto());
+
         return "orders";
     }
 

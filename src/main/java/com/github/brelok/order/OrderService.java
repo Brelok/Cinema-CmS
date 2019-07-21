@@ -58,6 +58,10 @@ public class OrderService {
         return new OrderDtoSave(orderRepository.getOne(id));
     }
 
+    public OrderDtoDisplay findOneDtoDisplay(Long id){
+        return new OrderDtoDisplay(orderRepository.getOne(id));
+    }
+
     public Order setValuesOrderFromOrderDtoSave(Order order, OrderDtoSave orderDtoSave) {
         order.setId(orderDtoSave.getId());
 
