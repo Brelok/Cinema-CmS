@@ -32,6 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                        "/user/**").hasRole("ADMIN")
 //                .and().formLogin()
 //               .loginPage("/login");
+        //do zmiany w przypadku logowań
 
         http.csrf().disable();
     }
