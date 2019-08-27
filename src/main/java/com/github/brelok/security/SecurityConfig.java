@@ -24,14 +24,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/").permitAll();
-//                .antMatchers("/", "/login", "/register").permitAll()
-//                .antMatchers("/dashboard/**", "/car/**",
-//                        "/brand/**", "/addition/**",
-//                        "/equipment/**", "/order/**",
-//                        "/user/**").hasRole("ADMIN")
-//                .and().formLogin()
-//               .loginPage("/login");
+                .antMatchers("/").permitAll()
+                .antMatchers("/", "/login", "/register").permitAll()
+                .antMatchers("/dashboard/**", "/car/**",
+                        "/brand/**", "/addition/**",
+                        "/equipment/**", "/order/**",
+                        "/user/**").hasRole("ADMIN")
+                .anyRequest().permitAll() //dla wszystkich nie ujętych za pomocą definicji antMatchers adresów dostęp nie wymaga uwierzytelniania
+                .and().formLogin()
+               .loginPage("/login");
         //do zmiany w przypadku logowań
 
         http.csrf().disable();
