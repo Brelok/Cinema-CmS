@@ -6,6 +6,9 @@ import com.github.brelok.security.Role;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -21,14 +24,23 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "Please provide a firstname")
     private String firstName;
+
+    @NotEmpty(message = "Please provide a lastname")
     private String lastName;
 
+    @Email(message = "Please provide a valid mail")
+    @NotEmpty(message = "Please provide a email")
     private String email;
 
     @Column(nullable = false, unique = true, length = 60)
+    @NotEmpty(message = "Please provide a login")
     private String login;
+
+    @Length(min = 8, message = "Your password must have at least 8 characters")
     private String password;
+
     private int enabled;
 
     @OneToMany(mappedBy = "user")
