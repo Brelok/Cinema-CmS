@@ -30,7 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/brand/**", "/addition/**",
                         "/equipment/**", "/order/**",
                         "/user/**").hasRole("ADMIN")
-                .anyRequest().permitAll() //dla wszystkich nie ujętych za pomocą definicji antMatchers adresów dostęp nie wymaga uwierzytelniania
+                .anyRequest()
+                .permitAll() //dla wszystkich nie ujętych za pomocą definicji antMatchers adresów dostęp nie wymaga uwierzytelniania
                 .and()
                 .formLogin().loginPage("/login")
                 .and()
