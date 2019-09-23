@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/dashboard/**", "/car/**",
                         "/brand/**", "/addition/**",
                         "/equipment/**", "/order/**",
-                        "/user/**").hasRole("ADMIN")
+                        "/user/**").hasRole("ADMIN")//
                 .anyRequest().permitAll() //dla wszystkich nie ujętych za pomocą definicji antMatchers adresów dostęp nie wymaga uwierzytelniania
                 .and()
                 .formLogin().loginPage("/login")
